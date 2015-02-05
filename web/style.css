@@ -1,15 +1,18 @@
 p {
     color:red;
 }
+table {
+    border:0;
+}
 #header {
-    background-color:black;
+    background-color:#0085E9;
     color:white;
     text-align:center;
     padding:5px;
 }
 #nav {
     line-height:30px;
-    background-color:#eeeeee;
+    background-color:#00E8FB;
     height:300px;
     width:100px;
     float:left;
@@ -21,7 +24,7 @@ p {
     padding:10px; 
 }
 #footer {
-    background-color:black;
+    background-color:#0085E9;
     color:white;
     clear:both;
     text-align:center;

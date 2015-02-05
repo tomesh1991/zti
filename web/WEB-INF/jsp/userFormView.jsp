@@ -14,36 +14,64 @@
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/style.css" />">
     </head>
-    <body><spring:nestedPath path="person">
-            <form action="" method="post">
-                <span>Imię:</span>
-                <spring:bind path="firstName">
-                    <input type="text" name="${status.expression}" value="${status.value}">
-                </spring:bind>
-                <br />
-                <span>Nazwisko:</span>
-                <spring:bind path="lastName">
-                    <input type="text" name="${status.expression}" value="${status.value}">
-                </spring:bind>
-                <br />
-                <span>Adres:</span>
-                <spring:bind path="address">
-                    <input type="text" name="${status.expression}" value="${status.value}">
-                </spring:bind>
-                <br />
-                <span>Login:</span>
-                <spring:bind path="userLogin">
-                    <input type="text" name="${status.expression}" value="${status.value}">
-                </spring:bind>
-                <br />
-                <span>Hasło:</span>
-                <spring:bind path="password">
-                    <input type="password" name="${status.expression}"
-                           value="${status.value}">
-                </spring:bind>
-                <br />
-                <input type="submit" value="Zarejestruj">
-            </form>
-        </spring:nestedPath>
+    <body>
+
+        <div id="header">
+            <h1>Plotki ploteczki</h1>
+        </div>
+
+        <div id="nav">
+            <a href="<c:url value="/register.htm" />">Rejestracja</a><br>           
+            <a href="<c:url value="/login.htm" />">Logowanie</a><br>
+            Coś tu będzie<br>
+        </div>
+
+        <div id="section">
+
+            <spring:nestedPath path="person">
+                <form action="" method="post">
+                    <table>
+                        <tr>
+                            <td><span>Imię:</span></td>
+                            <spring:bind path="firstName">
+                                <td><input type="text" name="${status.expression}" value="${status.value}"></td>
+                                </spring:bind>
+                        </tr>
+                        <tr>
+                            <td><span>Nazwisko:</span></td>
+                            <spring:bind path="lastName">
+                                <td><input type="text" name="${status.expression}" value="${status.value}"></td>
+                                </spring:bind>
+                        </tr>
+                        <tr>                  
+                            <td><span>Adres:</span></td>
+                            <spring:bind path="address">
+                                <td><input type="text" name="${status.expression}" value="${status.value}"></td>
+                                </spring:bind>
+                        </tr>
+                        <tr>                    
+                            <td><span>Login:</span></td>
+                            <spring:bind path="userLogin">
+                                <td><input type="text" name="${status.expression}" value="${status.value}"></td>
+                                </spring:bind>
+                        </tr>
+                        <tr>                  
+                            <td><span>Hasło:</span></td>
+                            <spring:bind path="password">
+                                <td><input type="password" name="${status.expression}"
+                                           value="${status.value}"></td>
+                                </spring:bind>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Zarejestruj"></td>
+                        </tr>
+                    </table>
+                </form>
+            </spring:nestedPath>
+        </div>
+
+        <div id="footer">
+            Copyright Skórewicz & Juszkiewicz
+        </div>
     </body>
 </html>

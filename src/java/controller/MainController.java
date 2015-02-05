@@ -5,6 +5,7 @@
  */
 package controller;
 
+import bean.LinkedPost;
 import org.springframework.web.servlet.mvc.SimpleFormController;
 
 /**
@@ -12,17 +13,14 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
  * @author Klotor90
  */
 public class MainController extends SimpleFormController {
-    
-    public MainController() {
-        //Initialize controller properties here or 
-        //in the Web Application Context
 
-        //setCommandClass(MyCommand.class);
-        //setCommandName("MyCommandName");
+    public MainController() {
+        setCommandClass(LinkedPost.class);
+        setCommandName("show");
         //setSuccessView("successView");
-        //setFormView("formView");
+        setFormView("mainView");
     }
-    
+
     @Override
     protected void doSubmitAction(Object command) throws Exception {
         throw new UnsupportedOperationException("Not yet implemented");

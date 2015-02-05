@@ -9,17 +9,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Welcome to Spring Web MVC project</title>
-        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="stylesheet" type="text/css" href="<c:url value="/style.css" />">
     </head>
 
     <body>
         <div id="header">
-            <h1>City Gallery</h1>
+            <h1>Plotki ploteczki</h1>
         </div>
 
         <div id="nav">
-            Rejestracja<br>
-            Logowanie<br>
+            <a href="<c:url value="/register.htm" />">Rejestracja</a><br>           
+            <a href="<c:url value="/login.htm" />">Logowanie</a><br>
             Coś tu będzie<br>
         </div>
 

@@ -16,36 +16,43 @@
     </head>
     <body>
         <div id="header">
-            <h1>City Gallery</h1>
+            <h1>Plotki ploteczki</h1>
         </div>
 
         <div id="nav">
-            London<br>
-            Paris<br>
-            Tokyo<br>
+            <a href="<c:url value="/register.htm" />">Rejestracja</a><br>           
+            <a href="<c:url value="/login.htm" />">Logowanie</a><br>
+            Coś tu będzie<br>
         </div>
 
         <div id="section">
+            
             <spring:nestedPath path="user">
                 <form action="" method="post">
-                    <span>Login:</span>
+                    <table>
+                        <tr>
+                            <td><span>Login:</span></td>
                     <spring:bind path="userLogin">
-                        <input type="text" name="${status.expression}" value="${status.value}">
+                        <td><input type="text" name="${status.expression}" value="${status.value}"></td>
                     </spring:bind>
-                    <br />
-                    <span>Hasło:</span>
+                        </tr>
+                        <tr>
+                    <td><span>Hasło:</span></td>
                     <spring:bind path="password">
-                        <input type="password" name="${status.expression}"
-                               value="${status.value}">
+                        <td><input type="password" name="${status.expression}"
+                               value="${status.value}"></td>
                     </spring:bind>
-                    <br />
-                    <input type="submit" value="Zaloguj">
+                        </tr>
+                        <tr>
+                    <td><input type="submit" value="Zaloguj"></td>
+                    </tr>
+                    </table>
                 </form>
             </spring:nestedPath>
         </div>
 
         <div id="footer">
-            Copyright Š W3Schools.com
+            Copyright Skórewicz & Juszkiewicz
         </div>
     </body>
 </html>

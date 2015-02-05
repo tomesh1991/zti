@@ -1,6 +1,6 @@
 <%-- 
-    Document   : postFormView
-    Created on : 2015-02-05, 09:34:49
+    Document   : mainView
+    Created on : 2015-02-05, 12:20:52
     Author     : Klotor90
 --%>
 
@@ -26,26 +26,11 @@
         </div>
 
         <div id="section">
-            <spring:nestedPath path="post">
-                <form action="" method="post">
-                    <span>Tekst:</span>
-                    <spring:bind path="textContent">
-                        <input type="text" name="${status.expression}" value="${status.value}">
-                    </spring:bind>
-                    <br />
-                    <span>Dodaj zdjęcie z internetu:</span>
-                    <spring:bind path="URL">
-                        <input type="text" name="${status.expression}" value="${status.value}">
-                    </spring:bind>
-                    <br />
-                    <input type="submit" value="Zarejestruj">
-                </form>
-            </spring:nestedPath>
+            Strona w konstrukszyn, przyjdź Pan jutro.
         </div>
 
         <div id="footer">
             Copyright Skórewicz & Juszkiewicz
         </div>
-
     </body>
 </html>

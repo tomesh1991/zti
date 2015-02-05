@@ -15,6 +15,22 @@
         <link rel="stylesheet" type="text/css" href="<c:url value="/style.css" />">
     </head>
     <body>
-        <h1>${welcomeMessage}</h1>
+        <div id="header">
+            <h1>Plotki ploteczki</h1>
+        </div>
+
+        <div id="nav">
+            <a href="<c:url value="/register.htm" />">Rejestracja</a><br>           
+            <a href="<c:url value="/login.htm" />">Logowanie</a><br>
+            Coś tu będzie<br>
+        </div>
+
+        <div id="section">
+            <h1>${welcomeMessage}</h1>
+        </div>
+
+        <div id="footer">
+            Copyright Skórewicz & Juszkiewicz
+        </div>
     </body>
 </html>
