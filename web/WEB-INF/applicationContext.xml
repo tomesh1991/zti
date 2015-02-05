@@ -11,7 +11,7 @@
     <!--bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="/WEB-INF/jdbc.properties" />
-
+          
 <bean id="dataSource"
     class="org.springframework.jdbc.datasource.DriverManagerDataSource"
     p:driverClassName="${jdbc.driverClassName}"
@@ -20,5 +20,19 @@
     p:password="${jdbc.password}" /-->
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
-
+    <bean id="dataSource" destroy-method="close"
+          class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver"/>
+        <property name="url" value="jdbc:derby://localhost:1527/SpringAppDB"/>
+        <property name="username" value="app"/>
+        <property name="password" value="app"/>
+    </bean>
+    <bean id="personDAO" class="dao.PersonDAOImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean name="universalService" class="service.UniversalService">
+        <property name="personDAO" ref="personDAO"/>
+    </bean>
+    <aop:aspectj-autoproxy />
+    <bean id="loggerAspect" class="aspect.LoggerAspect"/>
 </beans>
