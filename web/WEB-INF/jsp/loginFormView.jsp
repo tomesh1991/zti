@@ -20,6 +20,7 @@
         </div>
 
         <div id="nav">
+            <a href="<c:url value="/main.htm" />">Główna</a><br>   
             <a href="<c:url value="/register.htm" />">Rejestracja</a><br>           
             <a href="<c:url value="/login.htm" />">Logowanie</a><br>
             Coś tu będzie<br>
