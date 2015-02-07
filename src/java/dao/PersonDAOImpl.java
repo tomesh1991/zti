@@ -24,31 +24,47 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public void addPerson(Person person) {
-        String query = "INSERT INTO UNTITLED (FIRSTNAME, LASTNAME, ADDRESS, USERLOGIN, PASSWORD) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO USERS (NAME, EMAIL, LOGIN, PASSWORD, ADMIN, STATUS) VALUES (?,?,?,?,?,false,1)";
         jdbcTemplate.update(query, new Object[]{
-            person.getFirstName(),
-            person.getLastName(),
-            person.getAddress(),
+            person.getPersName(),
+            person.getPersEmail(),
             person.getUserLogin(),
-            person.getPassword()
+            person.getUserPass()
         });
     }
 
     @Override
-    public Person getPerson(String userLogin) {
-        String query = "SELECT * FROM UNTITLED WHERE USERLOGIN=?";
+    public Person getPersonByLogin(String userLogin) {
+        String query = "SELECT * FROM USERS WHERE USERLOGIN=?";
         Person person = null;
         try {
             person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
-                userLogin}, (ResultSet rs, int i) -> new Person(rs.getString("FIRSTNAME"),
-                        rs.getString("LASTNAME"),
-                        rs.getString("ADDRESS"),
+                userLogin}, (ResultSet rs, int i) -> new Person(rs.getString("NAME"),
+                        rs.getString("EMAIL"),
                         rs.getString("USERLOGIN"),
                         rs.getString("PASSWORD")
                 ));
         } catch (Exception ex) {
             System.out.println("Could not get Person form database for login ["
                     + userLogin + "]");
+        }
+        return person;
+    }
+    
+    @Override
+    public Person getPersonById(int userId) {
+        String query = "SELECT * FROM USERS WHERE id=?";
+        Person person = null;
+        try {
+            person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
+                userId}, (ResultSet rs, int i) -> new Person(rs.getString("NAME"),
+                        rs.getString("EMAIL"),
+                        rs.getString("USERLOGIN"),
+                        rs.getString("PASSWORD")
+                ));
+        } catch (Exception ex) {
+            System.out.println("Could not get Person form database for id ["
+                    + userId + "]");
         }
         return person;
     }
