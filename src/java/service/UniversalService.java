@@ -20,8 +20,7 @@ public class UniversalService {
 
     public String personWelcome(Person person) {
         System.out.print("Powitanie użytkownika");
-        String result = "Witaj użytkowniku " + person.getFirstName() + " "
-                + person.getLastName() + " (" + person.getUserLogin()
+        String result = "Witaj użytkowniku " + person.getPersName() + " (" + person.getUserLogin()
                 + ")";
         return result;
     }
@@ -30,7 +29,7 @@ public class UniversalService {
         LoginWrapper loginWrapper = new LoginWrapper();
         Person person = getPerson(user);
         if (person != null) {
-            if (person.getPassword().equals(user.getPassword())) {
+            if (person.getUserPass().equals(user.getUserPass())) {
                 loginWrapper.setPerson(person);
                 String message = "Użytkownik został zalogowany";
                 loginWrapper.setMessage(message);
@@ -51,8 +50,8 @@ public class UniversalService {
 
     public Person getPerson(User user) {
         if (user != null) {
-            //Person person = getPerson(user); // Uśmiech prowadzącego :)
-            return personDAO.getPerson(user.getUserLogin());
+            //Person person = getPersonByLogin(user); // Uśmiech prowadzącego :)
+            return personDAO.getPersonByLogin(user.getUserLogin());
         }
         return null;
     }

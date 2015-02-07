@@ -53,7 +53,7 @@ public class PersonDAOImpl implements PersonDAO {
     
     @Override
     public Person getPersonById(int userId) {
-        String query = "SELECT * FROM USERS WHERE id=?";
+        String query = "SELECT * FROM USERS WHERE ID=?";
         Person person = null;
         try {
             person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
@@ -65,6 +65,24 @@ public class PersonDAOImpl implements PersonDAO {
         } catch (Exception ex) {
             System.out.println("Could not get Person form database for id ["
                     + userId + "]");
+        }
+        return person;
+    }
+    
+    @Override
+    public Person getPersonByStatus(int userStat) {
+        String query = "SELECT * FROM USERS WHERE STATUS=?";
+        Person person = null;
+        try {
+            person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
+                userStat}, (ResultSet rs, int i) -> new Person(rs.getString("NAME"),
+                        rs.getString("EMAIL"),
+                        rs.getString("USERLOGIN"),
+                        rs.getString("PASSWORD")
+                ));
+        } catch (Exception ex) {
+            System.out.println("Could not get Person form database for id ["
+                    + userStat + "]");
         }
         return person;
     }

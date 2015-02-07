@@ -13,5 +13,7 @@ import bean.Person;
  */
 public interface PersonDAO {
     void addPerson(Person person);
-    Person getPerson(String userLogin);
+    Person getPersonByLogin(String userLogin);
+    Person getPersonById(int userId);
+    Person getPersonByStatus(int userStat);
 }

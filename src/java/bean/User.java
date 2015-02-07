@@ -9,17 +9,28 @@ package bean;
  *
  * @author Klotor90
  */
-public class User
-{
-    private String password;
-    private String userLogin;
+public class User {
 
-    public String getPassword() {
-        return password;
+    private int userId;
+    private String userPass;
+    private String userLogin;
+    private boolean isAdmin;
+    private int userStatus;
+
+    public int getUserId() {
+        return userId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getUserPass() {
+        return userPass;
+    }
+
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
     }
 
     public String getUserLogin() {
@@ -29,5 +40,21 @@ public class User
     public void setUserLogin(String userLogin) {
         this.userLogin = userLogin;
     }
-    
+
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public int getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(int userStatus) {
+        this.userStatus = userStatus;
+    }
+
 }

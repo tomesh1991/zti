@@ -11,47 +11,37 @@ package bean;
  */
 public class Person extends User {
 
-    private String firstName;
-    private String lastName;
-    private String address;
+    private String persName;
+    private String persEmail;
 
     public Person() {
     }
 
-    public Person(String firstName, String lastName, String address, String userLogin, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
+    public Person(String persName, String email, String userLogin, String password) {
+        this.persName = persName;
+        this.persEmail = email;
         super.setUserLogin(userLogin);
-        super.setPassword(password);
+        super.setUserPass(password);
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getPersName() {
+        return persName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setPersName(String persName) {
+        this.persName = persName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getPersEmail() {
+        return persEmail;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPersEmail(String persEmail) {
+        this.persEmail = persEmail;
     }
 
     @Override
     public String toString() {
-        return "Person{" + "firstName=" + firstName + ", lastName=" + lastName + '}';
+        return "Person{" + "firstName=" + persName + '}';
     }
 }

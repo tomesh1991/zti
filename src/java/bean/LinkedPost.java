@@ -9,14 +9,12 @@ package bean;
  *
  * @author Klotor90
  */
-public class LinkedPost extends Post{
+public class LinkedPost extends Post {
+
     private String URL;
-    
-    public LinkedPost(){}
-    public LinkedPost(String textContent, String Author, String URL)
-    {
-        super.setTextContent(textContent);
-        super.setAuthor(Author);
+
+    public LinkedPost(int postId, int postUserId, String postText, String postTimestamp, int postStatus, String URL) {
+        super(postId, postUserId, postText, postTimestamp, postStatus);
         this.URL = URL;
     }
 
@@ -27,10 +25,9 @@ public class LinkedPost extends Post{
     public void setURL(String URL) {
         this.URL = URL;
     }
-    
+
     @Override
-    public String toString()
-    {
-        return "Post by " + super.getAuthor() + ": " + super.getTextContent() + " #" + this.URL;
+    public String toString() {
+        return "Post by " + super.getPostTimestamp() + ": " + super.getPostText() + " #" + this.URL;
     }
 }

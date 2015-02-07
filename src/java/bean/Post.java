@@ -10,24 +10,59 @@ package bean;
  * @author Klotor90
  */
 public class Post {
-    private String textContent;
-    private String author;
 
-    public String getTextContent() {
-        return textContent;
-    }
+    private int postId;
+    private int postUserId;
+    private String postText;
+    private String postTimestamp;
+    private int postStatus;
 
-    public void setTextContent(String textContent) {
-        this.textContent = textContent;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public Post(int postId, int postUserId, String postText, String postTimestamp, int postStatus) {
+        this.postId = postId;
+        this.postUserId = postUserId;
+        this.postText = postText;
+        this.postTimestamp = postTimestamp;
+        this.postStatus = postStatus;
     }
     
-    
+    public int getPostUserId() {
+        return postUserId;
+    }
+
+    public void setPostUserId(int postUserId) {
+        this.postUserId = postUserId;
+    }
+
+    public int getPostStatus() {
+        return postStatus;
+    }
+
+    public void setPostStatus(int postStatus) {
+        this.postStatus = postStatus;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
+
+    public String getPostText() {
+        return postText;
+    }
+
+    public void setPostText(String postText) {
+        this.postText = postText;
+    }
+
+    public String getPostTimestamp() {
+        return postTimestamp;
+    }
+
+    public void setPostTimestamp(String postTimestamp) {
+        this.postTimestamp = postTimestamp;
+    }
+
 }
