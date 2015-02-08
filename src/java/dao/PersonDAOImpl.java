@@ -60,7 +60,7 @@ public class PersonDAOImpl implements PersonDAO {
             person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
                 userId}, (ResultSet rs, int i) -> new Person(rs.getString("NAME"),
                         rs.getString("EMAIL"),
-                        rs.getString("USERLOGIN"),
+                        rs.getString("LOGIN"),
                         rs.getString("PASSWORD")
                 ));
         } catch (Exception ex) {
@@ -79,7 +79,7 @@ public class PersonDAOImpl implements PersonDAO {
             person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
                 userStat}, (ResultSet rs, int i) -> new Person(rs.getString("NAME"),
                         rs.getString("EMAIL"),
-                        rs.getString("USERLOGIN"),
+                        rs.getString("LOGIN"),
                         rs.getString("PASSWORD")
                 ));
         } catch (Exception ex) {
