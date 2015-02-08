@@ -36,13 +36,13 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public Person getPersonByLogin(String userLogin) {
-        String query = "SELECT * FROM USERS WHERE USERLOGIN=?";
+        String query = "SELECT * FROM USERS WHERE LOGIN=?";
         Person person = null;
         try {
             person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
                 userLogin}, (ResultSet rs, int i) -> new Person(rs.getString("NAME"),
                         rs.getString("EMAIL"),
-                        rs.getString("USERLOGIN"),
+                        rs.getString("LOGIN"),
                         rs.getString("PASSWORD")
                 ));
         } catch (Exception ex) {
