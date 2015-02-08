@@ -34,19 +34,13 @@
                     <table>
                         <tr>
                             <td><span>Imię:</span></td>
-                            <spring:bind path="firstName">
-                                <td><input type="text" name="${status.expression}" value="${status.value}"></td>
-                                </spring:bind>
-                        </tr>
-                        <tr>
-                            <td><span>Nazwisko:</span></td>
-                            <spring:bind path="lastName">
+                            <spring:bind path="persName">
                                 <td><input type="text" name="${status.expression}" value="${status.value}"></td>
                                 </spring:bind>
                         </tr>
                         <tr>                  
                             <td><span>Adres:</span></td>
-                            <spring:bind path="address">
+                            <spring:bind path="persEmail">
                                 <td><input type="text" name="${status.expression}" value="${status.value}"></td>
                                 </spring:bind>
                         </tr>
@@ -58,7 +52,7 @@
                         </tr>
                         <tr>                  
                             <td><span>Hasło:</span></td>
-                            <spring:bind path="password">
+                            <spring:bind path="userPass">
                                 <td><input type="password" name="${status.expression}"
                                            value="${status.value}"></td>
                                 </spring:bind>

@@ -30,8 +30,8 @@
             <spring:nestedPath path="post">
                 <form action="" method="post">
                     <span>Tekst:</span>
-                    <spring:bind path="textContent">
-                        <input type="text" name="${status.expression}" value="${status.value}">
+                    <spring:bind path="postText">
+                        <textarea rows="4" cols="50" name="${status.expression}" value="${status.value}">Wpisz...</textarea>
                     </spring:bind>
                     <br />
                     <span>Dodaj zdjęcie z internetu:</span>

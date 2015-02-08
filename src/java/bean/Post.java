@@ -17,6 +17,8 @@ public class Post {
     private String postTimestamp;
     private int postStatus;
 
+    public Post() {}
+    
     public Post(int postId, int postUserId, String postText, String postTimestamp, int postStatus) {
         this.postId = postId;
         this.postUserId = postUserId;

@@ -12,6 +12,10 @@ package bean;
 public class LinkedPost extends Post {
 
     private String URL;
+    
+    public LinkedPost() {
+        super();
+    }
 
     public LinkedPost(int postId, int postUserId, String postText, String postTimestamp, int postStatus, String URL) {
         super(postId, postUserId, postText, postTimestamp, postStatus);

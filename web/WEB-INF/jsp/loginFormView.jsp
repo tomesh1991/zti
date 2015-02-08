@@ -39,7 +39,7 @@
                         </tr>
                         <tr>
                     <td><span>Hasło:</span></td>
-                    <spring:bind path="password">
+                    <spring:bind path="userPass">
                         <td><input type="password" name="${status.expression}"
                                value="${status.value}"></td>
                     </spring:bind>
