@@ -6,6 +6,7 @@
 package dao;
 
 import bean.Person;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,5 +16,5 @@ public interface PersonDAO {
     void addPerson(Person person);
     Person getPersonByLogin(String userLogin);
     Person getPersonById(int userId);
-    Person getPersonByStatus(int userStat);
+    ArrayList<Person> getPersonByStatus(int userStat);
 }

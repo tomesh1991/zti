@@ -7,6 +7,7 @@ package dao;
 
 import bean.Person;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -24,7 +25,7 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public void addPerson(Person person) {
-        String query = "INSERT INTO USERS (NAME, EMAIL, LOGIN, PASSWORD, ADMIN, STATUS) VALUES (?,?,?,?,?,false,1)";
+        String query = "INSERT INTO USERS (NAME, EMAIL, LOGIN, PASSWORD, ADMIN, STATUS) VALUES (?,?,?,?,false,1)";
         jdbcTemplate.update(query, new Object[]{
             person.getPersName(),
             person.getPersEmail(),
@@ -70,8 +71,9 @@ public class PersonDAOImpl implements PersonDAO {
     }
     
     @Override
-    public Person getPersonByStatus(int userStat) {
+    public ArrayList<Person> getPersonByStatus(int userStat) {
         String query = "SELECT * FROM USERS WHERE STATUS=?";
+        ArrayList<Person> persons = new ArrayList<>();
         Person person = null;
         try {
             person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
@@ -84,6 +86,6 @@ public class PersonDAOImpl implements PersonDAO {
             System.out.println("Could not get Person form database for id ["
                     + userStat + "]");
         }
-        return person;
+        return persons;
     }
 }
