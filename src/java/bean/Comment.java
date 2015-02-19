@@ -17,6 +17,17 @@ public class Comment {
     private String commText;
     private String commTimestamp;
 
+    public Comment() {
+    }
+
+    public Comment(int commId, int commPostId, int commUserId, String commText, String commTimestamp) {
+        this.commId = commId;
+        this.commPostId = commPostId;
+        this.commUserId = commUserId;
+        this.commText = commText;
+        this.commTimestamp = commTimestamp;
+    }
+
     public int getCommId() {
         return commId;
     }

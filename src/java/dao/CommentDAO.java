@@ -19,5 +19,5 @@ public interface CommentDAO {
 
     Comment getCommentByPost(int userId);
 
-    Comment getCommentByStatus(int userStat);
+    Comment getCommentByUser(int userId);
 }

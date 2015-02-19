@@ -6,6 +6,7 @@
 package dao;
 
 import bean.Comment;
+import java.sql.ResultSet;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -22,23 +23,70 @@ public class CommentDAOImpl implements CommentDAO {
     }
 
     @Override
-    public void addComment(Comment person) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addComment(Comment comm) {
+        String query = "INSERT INTO COMMENTS (ID, POST_ID, USER_ID, TIMESTAMP, TEXT) VALUES (?,?,?,?,?)";
+        jdbcTemplate.update(query, new Object[]{
+            comm.getCommId(),
+            comm.getCommPostId(),
+            comm.getCommUserId(),
+            comm.getCommTimestamp(),
+            comm.getCommText(),});
     }
 
     @Override
-    public Comment getCommentById(int postId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Comment getCommentById(int commId) {
+        String query = "SELECT * FROM COMMENTS WHERE ID=?";
+        Comment post = null;
+        try {
+            post = (Comment) jdbcTemplate.queryForObject(query, new Object[]{
+                commId}, (ResultSet rs, int i) -> new Comment(rs.getInt("ID"),
+                    rs.getInt("POST_ID"),
+                    rs.getInt("USER_ID"),
+                    rs.getString("TIMESTAMP"),
+                    rs.getString("TEXT")
+            ));
+        } catch (Exception ex) {
+            System.out.println("Could not get Comment form database for id ["
+                    + commId + "]");
+        }
+        return post;
     }
 
     @Override
-    public Comment getCommentByPost(int userId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Comment getCommentByPost(int postId) {
+        String query = "SELECT * FROM COMMENTS WHERE POST_ID=?";
+        Comment post = null;
+        try {
+            post = (Comment) jdbcTemplate.queryForObject(query, new Object[]{
+                postId}, (ResultSet rs, int i) -> new Comment(rs.getInt("ID"),
+                    rs.getInt("POST_ID"),
+                    rs.getInt("USER_ID"),
+                    rs.getString("TIMESTAMP"),
+                    rs.getString("TEXT")
+            ));
+        } catch (Exception ex) {
+            System.out.println("Could not get Comment form database for post ["
+                    + postId + "]");
+        }
+        return post;
     }
 
     @Override
-    public Comment getCommentByStatus(int userStat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Comment getCommentByUser(int userId) {
+        String query = "SELECT * FROM COMMENTS WHERE USER_ID=?";
+        Comment post = null;
+        try {
+            post = (Comment) jdbcTemplate.queryForObject(query, new Object[]{
+                userId}, (ResultSet rs, int i) -> new Comment(rs.getInt("ID"),
+                    rs.getInt("POST_ID"),
+                    rs.getInt("USER_ID"),
+                    rs.getString("TIMESTAMP"),
+                    rs.getString("TEXT")
+            ));
+        } catch (Exception ex) {
+            System.out.println("Could not get Comment form database for user ["
+                    + userId + "]");
+        }
+        return post;
     }
-
 }

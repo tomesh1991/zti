@@ -36,7 +36,7 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public Post getPostById(int postId) {
-        String query = "SELECT * FROM POSTS WHERE ID=?";
+        String query = "SELECT * FROM POST WHERE ID=?";
         Post post = null;
         try {
             post = (Post) jdbcTemplate.queryForObject(query, new Object[]{
@@ -55,7 +55,7 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public Post getPostByUser(int userId) {
-        String query = "SELECT * FROM POSTS WHERE USER_ID=?";
+        String query = "SELECT * FROM POST WHERE USER_ID=?";
         Post post = null;
         try {
             post = (Post) jdbcTemplate.queryForObject(query, new Object[]{
@@ -74,7 +74,7 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public Post getPostByStatus(int postStat) {
-        String query = "SELECT * FROM POSTS WHERE STATUS=?";
+        String query = "SELECT * FROM POST WHERE STATUS=?";
         Post post = null;
         try {
             post = (Post) jdbcTemplate.queryForObject(query, new Object[]{
