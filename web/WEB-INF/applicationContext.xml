@@ -23,7 +23,7 @@
     <bean id="dataSource" destroy-method="close"
           class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver"/>
-        <property name="url" value="jdbc:derby://localhost:1527/SpringAppDB"/>
+        <property name="url" value="jdbc:derby://localhost:1527/zti_db"/>
         <property name="username" value="app"/>
         <property name="password" value="app"/>
     </bean>

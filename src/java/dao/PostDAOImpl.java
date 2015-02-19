@@ -7,6 +7,7 @@ package dao;
 
 import bean.Post;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -54,8 +55,9 @@ public class PostDAOImpl implements PostDAO {
     }
 
     @Override
-    public Post getPostByUser(int userId) {
-        String query = "SELECT * FROM POST WHERE USER_ID=?";
+    public ArrayList<Post> getPostByUser(int userId) {
+        String query = "SELECT * FROM POSTS WHERE USER_ID=?";
+        ArrayList<Post> posts = new ArrayList<>(); 
         Post post = null;
         try {
             post = (Post) jdbcTemplate.queryForObject(query, new Object[]{
@@ -65,16 +67,18 @@ public class PostDAOImpl implements PostDAO {
                         rs.getString("TEXT"),
                         rs.getInt("STATUS")
                 ));
+            posts.add(post);
         } catch (Exception ex) {
             System.out.println("Could not get Post form database for user ["
                     + userId + "]");
         }
-        return post;
+        return posts;
     }
 
     @Override
-    public Post getPostByStatus(int postStat) {
-        String query = "SELECT * FROM POST WHERE STATUS=?";
+    public ArrayList<Post> getPostByStatus(int postStat) {
+        String query = "SELECT * FROM POSTS WHERE STATUS=?";
+        ArrayList<Post> posts = new ArrayList<>();
         Post post = null;
         try {
             post = (Post) jdbcTemplate.queryForObject(query, new Object[]{
@@ -84,11 +88,12 @@ public class PostDAOImpl implements PostDAO {
                         rs.getString("TEXT"),
                         rs.getInt("STATUS")
                 ));
+            posts.add(post);
         } catch (Exception ex) {
             System.out.println("Could not get Post form database for status ["
                     + postStat + "]");
         }
-        return post;
+        return posts;
     }
 
 }

@@ -6,6 +6,7 @@
 package dao;
 
 import bean.Post;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +15,6 @@ import bean.Post;
 public interface PostDAO {
     void addPost(Post post);
     Post getPostById(int postId);
-    Post getPostByUser(int userId);
-    Post getPostByStatus(int postStat);
+    ArrayList<Post> getPostByUser(int userId);
+    ArrayList<Post> getPostByStatus(int postStat);
 }

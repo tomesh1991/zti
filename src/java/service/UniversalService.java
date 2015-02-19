@@ -5,10 +5,12 @@
  */
 package service;
 
+import bean.LinkedPost;
 import bean.LoginWrapper;
 import bean.Person;
 import bean.User;
 import dao.PersonDAO;
+import dao.PostDAOImpl;
 
 /**
  *
@@ -17,6 +19,7 @@ import dao.PersonDAO;
 public class UniversalService {
 
     PersonDAO personDAO;
+    PostDAOImpl postDAO;
 
     public String personWelcome(Person person) {
         System.out.print("Powitanie użytkownika");
@@ -54,6 +57,10 @@ public class UniversalService {
             return personDAO.getPersonByLogin(user.getUserLogin());
         }
         return null;
+    }
+    
+    public void addPost(LinkedPost post) {
+        postDAO.addPost(post);
     }
 
     public void setPersonDAO(PersonDAO personDAO) {
