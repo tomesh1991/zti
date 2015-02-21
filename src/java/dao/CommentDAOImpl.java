@@ -24,12 +24,10 @@ public class CommentDAOImpl implements CommentDAO {
 
     @Override
     public void addComment(Comment comm) {
-        String query = "INSERT INTO COMMENTS (ID, POST_ID, USER_ID, TIMESTAMP, TEXT) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO COMMENTS (POST_ID, USER_ID, TEXT) VALUES (?,?,?)";
         jdbcTemplate.update(query, new Object[]{
-            comm.getCommId(),
             comm.getCommPostId(),
             comm.getCommUserId(),
-            comm.getCommTimestamp(),
             comm.getCommText(),});
     }
 

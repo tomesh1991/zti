@@ -25,11 +25,9 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public void addPost(Post post) {
-        String query = "INSERT INTO POST (ID, USER_ID, TIMESTAMP, TEXT, STATUS) VALUES (?,?,?,?,?,1)";
+        String query = "INSERT INTO POSTS (USER_ID, TEXT, STATUS) VALUES (?,?,0)";
         jdbcTemplate.update(query, new Object[]{
-            post.getPostId(),
             post.getPostUserId(),
-            post.getPostTimestamp(),
             post.getPostText(),
             post.getPostStatus()
         });
@@ -37,7 +35,7 @@ public class PostDAOImpl implements PostDAO {
 
     @Override
     public Post getPostById(int postId) {
-        String query = "SELECT * FROM POST WHERE ID=?";
+        String query = "SELECT * FROM POSTS WHERE ID=?";
         Post post = null;
         try {
             post = (Post) jdbcTemplate.queryForObject(query, new Object[]{
