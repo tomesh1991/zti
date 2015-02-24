@@ -17,4 +17,6 @@ public interface PostDAO {
     Post getPostById(int postId);
     ArrayList<Post> getPostByUser(int userId);
     ArrayList<Post> getPostByStatus(int postStat);
+    void acceptPost(int postId);
+    void dismissPost(int postId);
 }

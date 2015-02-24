@@ -93,5 +93,19 @@ public class PostDAOImpl implements PostDAO {
         }
         return posts;
     }
-
+    @Override
+    public void acceptPost(int postId){
+        String query = "UPDATE POSTS SET STATUS=1 WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+           postId
+        });
+    }
+    
+    @Override
+    public void dismissPost(int postId){
+        String query = "UPDATE POSTS SET STATUS=2 WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+           postId
+        });
+    }
 }
