@@ -88,4 +88,61 @@ public class PersonDAOImpl implements PersonDAO {
         }
         return persons;
     }
+    @Override
+    public void changeUserPasswd(int userId, String new_pass){
+        String query = "UPDATE USERS SET PASSWORD = '?' WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+            new_pass,
+            userId
+        });
+    }
+    
+    @Override
+    public void changeUserMail(int userId, String new_addr){
+        String query = "UPDATE USERS SET EMAIL = '?' WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+            new_addr,
+            userId
+        });
+    }
+    
+    @Override
+    public void acceptUser(int userId){
+        String query = "UPDATE USERS SET STATUS=1 WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+           userId
+        });
+    }
+    
+    @Override
+    public void dismissUser(int userId){
+        String query = "UPDATE USERS SET STATUS=2 WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+           userId
+        });
+    }
+    
+    @Override
+    public void deleteUser(int userId){
+        String query = "UPDATE USERS SET STATUS=3 WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+           userId
+        });
+    }
+    
+    @Override
+    public void grantAdminAccess(int userId){
+        String query = "UPDATE USERS SET ADMIN=true WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+           userId
+        });
+    }
+    
+    @Override
+    public void revokeAdminAccess(int userId){
+        String query = "UPDATE USERS SET ADMIN=false WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+           userId
+        });
+    }
 }

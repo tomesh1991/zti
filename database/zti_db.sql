@@ -3,10 +3,10 @@ CREATE TABLE "USERS"
 "ID" INT not null primary key
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1),   
-"NAME" VARCHAR(100) not null,     
-"EMAIL" VARCHAR(255) not null,
-"LOGIN" VARCHAR(100) not null,
-"PASSWORD" VARCHAR(100) not null,
+"NAME" VARCHAR(100) not null DEFAULT '',     
+"EMAIL" VARCHAR(255) not null DEFAULT '',
+"LOGIN" VARCHAR(100) not null DEFAULT '',
+"PASSWORD" VARCHAR(100) not null DEFAULT '',
 "ADMIN" BOOLEAN NOT NULL DEFAULT false,  
 "STATUS" INTEGER not null default 0
 );
@@ -18,9 +18,9 @@ CREATE TABLE "POSTS"
 "ID" INT not null primary key
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1),   
-"USER_ID" INT not null,     
+"USER_ID" INT not null DEFAULT 1,     
 "TIMESTAMP" TIMESTAMP not null default CURRENT_TIMESTAMP, 
-"TEXT" LONG VARCHAR not null, 
+"TEXT" LONG VARCHAR not null DEFAULT '', 
 "STATUS" INTEGER not null default 0
 );
 
@@ -30,10 +30,10 @@ CREATE TABLE "COMMENTS"
 "ID" INT not null primary key
         GENERATED ALWAYS AS IDENTITY
         (START WITH 1, INCREMENT BY 1), 
-"POST_ID" INT not null,   
-"USER_ID" INT not null, 
+"POST_ID" INT not null DEFAULT 1,   
+"USER_ID" INT not null DEFAULT 1, 
 "TIMESTAMP" TIMESTAMP not null default CURRENT_TIMESTAMP,
-"TEXT" LONG VARCHAR not null
+"TEXT" LONG VARCHAR not null DEFAULT ''
 );
 
 ALTER TABLE POSTS ADD FOREIGN KEY(USER_ID) REFERENCES USERS;
