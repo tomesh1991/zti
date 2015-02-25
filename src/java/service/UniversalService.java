@@ -8,7 +8,9 @@ package service;
 import bean.LinkedPost;
 import bean.LoginWrapper;
 import bean.Person;
+import bean.Post;
 import bean.User;
+import dao.LinkedPostDAOImpl;
 import dao.PersonDAO;
 import dao.PostDAOImpl;
 
@@ -19,6 +21,7 @@ import dao.PostDAOImpl;
 public class UniversalService {
 
     PersonDAO personDAO;
+    LinkedPostDAOImpl linkedPostDAO;
     PostDAOImpl postDAO;
 
     public String personWelcome(Person person) {
@@ -59,8 +62,11 @@ public class UniversalService {
         return null;
     }
     
-    public void addPost(LinkedPost post) {
+    public void addPost(Post post) {
         postDAO.addPost(post);
+    }
+    public void addLinkedPost(LinkedPost post) {
+        linkedPostDAO.addLinkedPost(post);
     }
 
     public void setPersonDAO(PersonDAO personDAO) {

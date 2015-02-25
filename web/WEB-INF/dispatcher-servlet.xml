@@ -37,6 +37,6 @@
     
     <bean class="controller.RegisterController" p:universalService-ref="universalService"/><!-- mapowanie dla /register.htm -->
     <bean class="controller.LoginController" p:universalService-ref="universalService"/><!-- mapowanie dla /login.htm -->
-    <bean class="controller.PostController"/>
+    <bean class="controller.PostController" p:universalService-ref="universalService"/>
     <bean class="controller.MainController"/>
 </beans>

@@ -1,4 +1,5 @@
 
+<%@page import="bean.LoggedUser"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -29,7 +30,10 @@
         </div>
 
         <div id="footer">
-            Copyright Skórewicz & Juszkiewicz
+            Zalogowany jako 
+            <%
+            out.println(LoggedUser.getLoggedUser());
+            %>
         </div>
     </body>
 </html>

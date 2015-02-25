@@ -23,9 +23,13 @@ public class PostController extends SimpleFormController {
 
     private UniversalService universalService;
     
+    public void setUniversalService(UniversalService universalService) {
+        this.universalService = universalService;
+    }
+    
     public PostController() {
-        setCommandClass(Post.class);
-        setCommandName("post");
+        setCommandClass(LinkedPost.class);
+        setCommandName("linkedPost");
         setSuccessView("postSuccessView");
         setFormView("postFormView");
     }
@@ -43,9 +47,13 @@ public class PostController extends SimpleFormController {
             Object command,
             BindException errors) throws Exception {
         ModelAndView mv = new ModelAndView(getSuccessView());
+        System.out.println("Raz");
         LinkedPost post = (LinkedPost) command;
+        System.out.println("Dwa");
         mv.addObject("postMessage","Dziękujemy za wysłanie wwpisu.");
-        universalService.addPost(post);
+        System.out.println("Trzy");
+        universalService.addLinkedPost(post);
+        System.out.println("Cztery");
         return mv;
     }
 

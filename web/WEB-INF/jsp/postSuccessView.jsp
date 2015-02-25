@@ -4,6 +4,7 @@
     Author     : Klotor90
 --%>
 
+<%@page import="bean.LoggedUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -31,7 +32,10 @@
         </div>
 
         <div id="footer">
-            Copyright Skórewicz & Juszkiewicz
+            Zalogowany jako 
+            <%
+            out.println(LoggedUser.getLoggedUser());
+            %>
         </div>
     </body>
 </html>

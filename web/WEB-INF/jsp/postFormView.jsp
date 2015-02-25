@@ -4,6 +4,7 @@
     Author     : Klotor90
 --%>
 
+<%@page import="bean.LoggedUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -27,25 +28,28 @@
         </div>
 
         <div id="section">
-            <spring:nestedPath path="post">
+            <spring:nestedPath path="linkedPost">
                 <form action="" method="post">
                     <span>Tekst:</span>
                     <spring:bind path="postText">
                         <textarea rows="4" cols="50" name="${status.expression}" value="${status.value}">Wpisz...</textarea>
                     </spring:bind>
                     <br />
-                    <span>Dodaj zdjęcie z internetu:</span>
+                    <span>Dodaj link z internetu:</span>
                     <spring:bind path="URL">
                         <input type="text" name="${status.expression}" value="${status.value}">
                     </spring:bind>
                     <br />
-                    <input type="submit" value="Zarejestruj">
+                    <input type="submit" value="Wyślij post">
                 </form>
             </spring:nestedPath>
         </div>
 
         <div id="footer">
-            Copyright Skórewicz & Juszkiewicz
+            Zalogowany jako 
+            <%
+            out.println(LoggedUser.getLoggedUser());
+            %>
         </div>
 
     </body>

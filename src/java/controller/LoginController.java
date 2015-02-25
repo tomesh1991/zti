@@ -5,10 +5,10 @@
  */
 package controller;
 
+import bean.LoggedUser;
 import bean.LoginWrapper;
 import bean.Person;
 import bean.User;
-import java.net.BindException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,6 +46,7 @@ public class LoginController extends SimpleFormController {
         LoginWrapper loginWrapper = universalService.logIn(user);
         Person person = loginWrapper.getPerson();
         ModelAndView mv = new ModelAndView(getSuccessView());
+        LoggedUser.setLoggedUser(person);
         if (person == null) {
             mv.addObject("welcomeMessage", loginWrapper.getMessage());
         } else {
