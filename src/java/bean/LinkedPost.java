@@ -38,4 +38,14 @@ public class LinkedPost extends Post {
     public String toString() {
         return "Post by " + super.getPostTimestamp() + ": " + super.getPostText() + " #" + this.URL;
     }
+    
+    public void printAll()
+    {
+        System.out.println(postId);
+        System.out.println(super.postUserId);
+        System.out.println(super.postText);
+        System.out.println(super.postTimestamp);
+        System.out.println(super.postStatus);
+        System.out.println(URL);
+    }
 }

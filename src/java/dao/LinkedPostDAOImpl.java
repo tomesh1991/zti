@@ -15,16 +15,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
  *
  * @author tomasz
  */
-public class LinkedPostDAOImpl extends PostDAOImpl implements LinkedPostDAO {
+public class LinkedPostDAOImpl implements LinkedPostDAO {
     private JdbcTemplate jdbcTemplate;
 
-    @Override
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     @Override
     public void addLinkedPost(LinkedPost post) {
+        post.printAll();
         String query = "INSERT INTO POST (USER_ID, TEXT, STATUS, PICT_URL) VALUES (?,?,0,?)";
         jdbcTemplate.update(query, new Object[]{
             post.getPostUserId(),
@@ -113,4 +113,6 @@ public class LinkedPostDAOImpl extends PostDAOImpl implements LinkedPostDAO {
            postId
         });
     }
+    
+    
 }

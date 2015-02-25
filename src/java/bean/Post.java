@@ -11,11 +11,11 @@ package bean;
  */
 public class Post {
 
-    private int postId;
-    private int postUserId;
-    private String postText;
-    private String postTimestamp;
-    private int postStatus;
+    int postId;
+    int postUserId;
+    String postText;
+    String postTimestamp;
+    int postStatus;
 
     public Post() {
     }
@@ -67,5 +67,4 @@ public class Post {
     public void setPostTimestamp(String postTimestamp) {
         this.postTimestamp = postTimestamp;
     }
-
 }

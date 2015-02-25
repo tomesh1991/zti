@@ -47,13 +47,17 @@ public class PostController extends SimpleFormController {
             Object command,
             BindException errors) throws Exception {
         ModelAndView mv = new ModelAndView(getSuccessView());
-        System.out.println("Raz");
         LinkedPost post = (LinkedPost) command;
-        System.out.println("Dwa");
+        post.printAll();
         mv.addObject("postMessage","Dziękujemy za wysłanie wwpisu.");
-        System.out.println("Trzy");
-        universalService.addLinkedPost(post);
-        System.out.println("Cztery");
+        try
+        {
+            universalService.addLinkedPost(post);
+        }
+        catch(Exception exp)
+        {
+            System.out.println(exp.getMessage());
+        }
         return mv;
     }
 

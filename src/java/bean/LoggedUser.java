@@ -31,4 +31,14 @@ public class LoggedUser {
         }
         return LoggedUser.loggedUser.getPersName();
     }
+
+    public static String getLoggedUserId() {
+        if(LoggedUser.loggedUser == null)
+        {
+            return "dupa";
+        }
+        return  Integer.toString(LoggedUser.loggedUser.getUserId());
+    }
+    
+    
 }

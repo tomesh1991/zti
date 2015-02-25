@@ -12,9 +12,11 @@ import java.util.ArrayList;
  *
  * @author tomasz
  */
-public interface LinkedPostDAO extends PostDAO {
+public interface LinkedPostDAO {
     void addLinkedPost(LinkedPost post);
     LinkedPost getLinkedPostById(int postId);
     ArrayList<LinkedPost> getLinkedPostByUser(int userId);
     ArrayList<LinkedPost> getLinkedPostByStatus(int postStat);
+    void acceptPost(int postId);
+    void dismissPost(int postId);
 }

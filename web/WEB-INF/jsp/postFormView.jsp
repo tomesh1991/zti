@@ -23,7 +23,8 @@
         <div id="nav">
             <a href="<c:url value="/main.htm" />">Główna</a><br>   
             <a href="<c:url value="/register.htm" />">Rejestracja</a><br>           
-            <a href="<c:url value="/login.htm" />">Logowanie</a><br>
+            <a href="<c:url value="/login.htm" />">Logowanie</a><br>    
+            <a href="<c:url value="/post.htm" />">Posty</a><br>
             Coś tu będzie<br>
         </div>
 
@@ -38,6 +39,9 @@
                     <span>Dodaj link z internetu:</span>
                     <spring:bind path="URL">
                         <input type="text" name="${status.expression}" value="${status.value}">
+                    </spring:bind>
+                    <spring:bind path="postUserId">
+                        <input type="hidden" name="${status.expression}" value="<% out.print(LoggedUser.getLoggedUserId()); %>">
                     </spring:bind>
                     <br />
                     <input type="submit" value="Wyślij post">
