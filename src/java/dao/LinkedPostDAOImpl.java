@@ -6,7 +6,6 @@
 package dao;
 
 import bean.LinkedPost;
-import bean.Post;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.sql.DataSource;
@@ -16,20 +15,19 @@ import org.springframework.jdbc.core.JdbcTemplate;
  *
  * @author tomasz
  */
-public class LinkedPostDAOImpl implements LinkedPostDAO {
+public class LinkedPostDAOImpl extends PostDAOImpl implements LinkedPostDAO {
     private JdbcTemplate jdbcTemplate;
 
+    @Override
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     @Override
     public void addLinkedPost(LinkedPost post) {
-        String query = "INSERT INTO POST (ID, USER_ID, TIMESTAMP, TEXT, STATUS, PICT_URL) VALUES (?,?,?,?,?,1,?)";
+        String query = "INSERT INTO POST (USER_ID, TEXT, STATUS, PICT_URL) VALUES (?,?,0,?)";
         jdbcTemplate.update(query, new Object[]{
-            post.getPostId(),
             post.getPostUserId(),
-            post.getPostTimestamp(),
             post.getPostText(),
             post.getPostStatus(),
             post.getURL()
@@ -98,5 +96,21 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
                     + postStat + "]");
         }
         return posts;
+    }
+
+    @Override
+    public void acceptPost(int postId){
+        String query = "UPDATE POSTS SET STATUS=1 WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+           postId
+        });
+    }
+
+    @Override
+    public void dismissPost(int postId){
+        String query = "UPDATE POSTS SET STATUS=2 WHERE ID=?";
+        jdbcTemplate.update(query, new Object[]{
+           postId
+        });
     }
 }
