@@ -73,4 +73,10 @@ public class UniversalService {
     public void setPersonDAO(PersonDAO personDAO) {
         this.personDAO = personDAO;
     }
+    public void setLinkedPostDAO(LinkedPostDAO linkedPostDAO) {
+        this.linkedPostDAO = linkedPostDAO;
+    }
+    public void setPostDAO(PostDAO postDAO) {
+        this.postDAO = postDAO;
+    }
 }

@@ -24,12 +24,12 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
 
     @Override
     public void addLinkedPost(LinkedPost post) {
-        post.printAll();
-        String query = "INSERT INTO POST (USER_ID, TEXT, STATUS, PICT_URL) VALUES (?,?,0,?)";
+        System.out.println("CHuju Ty!");
+        String query = "INSERT INTO POSTS (USER_ID, TEXT, STATUS, PICT_URL) VALUES (?,?,0,?)";
         jdbcTemplate.update(query, new Object[]{
             post.getPostUserId(),
             post.getPostText(),
-            post.getPostStatus(),
+            //post.getPostStatus(),
             post.getURL()
         });
     }

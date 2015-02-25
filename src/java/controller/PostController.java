@@ -49,15 +49,9 @@ public class PostController extends SimpleFormController {
         ModelAndView mv = new ModelAndView(getSuccessView());
         LinkedPost post = (LinkedPost) command;
         post.printAll();
-        mv.addObject("postMessage","Dziękujemy za wysłanie wwpisu.");
-        try
-        {
-            universalService.addLinkedPost(post);
-        }
-        catch(Exception exp)
-        {
-            System.out.println(exp.getMessage());
-        }
+
+        universalService.addLinkedPost(post);
+        
         return mv;
     }
 

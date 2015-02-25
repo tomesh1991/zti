@@ -30,9 +30,14 @@
     <bean id="personDAO" class="dao.PersonDAOImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <bean id="linkedPostDAO" class="dao.LinkedPostDAOImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
     <bean name="universalService" class="service.UniversalService">
         <property name="personDAO" ref="personDAO"/>
+        <property name="linkedPostDAO" ref="linkedPostDAO"/>
     </bean>
+    
     <aop:aspectj-autoproxy />
     <bean id="loggerAspect" class="aspect.LoggerAspect"/>
 </beans>
