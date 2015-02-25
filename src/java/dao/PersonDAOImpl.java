@@ -40,10 +40,13 @@ public class PersonDAOImpl implements PersonDAO {
         Person person = null;
         try {
             person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
-                userLogin}, (ResultSet rs, int i) -> new Person(rs.getString("NAME"),
-                        rs.getString("EMAIL"),
+                userLogin}, (ResultSet rs, int i) -> new Person(rs.getInt("ID"),
                         rs.getString("LOGIN"),
-                        rs.getString("PASSWORD")
+                        rs.getString("PASSWORD"),
+                        rs.getBoolean("ADMIN"),
+                        rs.getInt("STATUS"),
+                        rs.getString("NAME"),
+                        rs.getString("EMAIL")
                 ));
         } catch (Exception ex) {
             System.out.println("Could not get Person form database for login ["
@@ -58,10 +61,13 @@ public class PersonDAOImpl implements PersonDAO {
         Person person = null;
         try {
             person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
-                userId}, (ResultSet rs, int i) -> new Person(rs.getString("NAME"),
-                        rs.getString("EMAIL"),
+                userId}, (ResultSet rs, int i) -> new Person(rs.getInt("ID"),
                         rs.getString("LOGIN"),
-                        rs.getString("PASSWORD")
+                        rs.getString("PASSWORD"),
+                        rs.getBoolean("ADMIN"),
+                        rs.getInt("STATUS"),
+                        rs.getString("NAME"),
+                        rs.getString("EMAIL")
                 ));
         } catch (Exception ex) {
             System.out.println("Could not get Person form database for id ["
@@ -77,10 +83,13 @@ public class PersonDAOImpl implements PersonDAO {
         Person person = null;
         try {
             person = (Person) jdbcTemplate.queryForObject(query, new Object[]{
-                userStat}, (ResultSet rs, int i) -> new Person(rs.getString("NAME"),
-                        rs.getString("EMAIL"),
+                userStat}, (ResultSet rs, int i) -> new Person(rs.getInt("ID"),
                         rs.getString("LOGIN"),
-                        rs.getString("PASSWORD")
+                        rs.getString("PASSWORD"),
+                        rs.getBoolean("ADMIN"),
+                        rs.getInt("STATUS"),
+                        rs.getString("NAME"),
+                        rs.getString("EMAIL")
                 ));
         } catch (Exception ex) {
             System.out.println("Could not get Person form database for id ["

@@ -17,6 +17,17 @@ public class Person extends User {
     public Person() {
     }
 
+    public Person(String persName, String persEmail) {
+        this.persName = persName;
+        this.persEmail = persEmail;
+    }
+
+    public Person(int userId, String userLogin, String userPass, boolean isAdmin, int userStatus, String persName, String persEmail) {
+        super(userId, userPass, userLogin, isAdmin, userStatus);
+        this.persName = persName;
+        this.persEmail = persEmail;
+    }
+    
     public Person(String persName, String email, String userLogin, String password) {
         this.persName = persName;
         this.persEmail = email;

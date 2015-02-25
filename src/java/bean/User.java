@@ -17,6 +17,17 @@ public class User {
     private boolean isAdmin;
     private int userStatus;
 
+    public User() {
+    }
+    
+    public User(int userId, String userPass, String userLogin, boolean isAdmin, int userStatus) {
+        this.userId = userId;
+        this.userPass = userPass;
+        this.userLogin = userLogin;
+        this.isAdmin = isAdmin;
+        this.userStatus = userStatus;
+    }
+    
     public int getUserId() {
         return userId;
     }
