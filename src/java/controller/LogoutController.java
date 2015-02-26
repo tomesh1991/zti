@@ -5,7 +5,8 @@
  */
 package controller;
 
-import bean.LinkedPost;
+import bean.LoggedUser;
+import bean.Person;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.validation.BindException;
@@ -17,7 +18,7 @@ import service.UniversalService;
  *
  * @author Klotor90
  */
-public class MainController extends SimpleFormController {
+public class LogoutController extends SimpleFormController {
 
     private UniversalService universalService;
     
@@ -25,11 +26,11 @@ public class MainController extends SimpleFormController {
         this.universalService = universalService;
     }
     
-    public MainController() {
-        setCommandClass(LinkedPost.class);
-        setCommandName("show");
-        setSuccessView("mainView");
-        setFormView("mainView");
+    public LogoutController() {
+        setCommandClass(Person.class);
+        setCommandName("logout");
+        setSuccessView("logoutFormView");
+        setFormView("logoutFormView");
     }
     
     //Use onSubmit instead of doSubmitAction 
@@ -41,8 +42,8 @@ public class MainController extends SimpleFormController {
             Object command,
             BindException errors) throws Exception {
         ModelAndView mv = new ModelAndView(getSuccessView());
-
-        mv.addObject("posts",universalService.showPosts(1));
+        LoggedUser.setLoggedUser(null);
+        mv.addObject("info","Wylogowano");
         
         return mv;
     }

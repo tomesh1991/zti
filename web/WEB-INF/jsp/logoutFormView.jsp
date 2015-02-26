@@ -1,6 +1,7 @@
-<%-- 
-    Document   : postFormView
-    Created on : 2015-02-05, 09:34:49
+
+       <%-- 
+    Document   : loginFormView
+    Created on : 2015-01-06, 16:46:48
     Author     : Klotor90
 --%>
 
@@ -24,28 +25,16 @@
             <a href="<c:url value="/main.htm" />">Główna</a><br>   
             <a href="<c:url value="/register.htm" />">Rejestracja</a><br>           
             <a href="<c:url value="/login.htm" />">Logowanie</a><br>    
-            <a href="<c:url value="/post.htm" />">Posty</a><br> 
+            <a href="<c:url value="/post.htm" />">Posty</a><br>
             <a href="<c:url value="/admin.htm" />">Panel</a><br>
             <a href="<c:url value="/logout.htm" />">Wyloguj</a><br>
         </div>
 
         <div id="section">
-            <spring:nestedPath path="linkedPost">
+            
+             <spring:nestedPath path="logout">
                 <form action="" method="post">
-                    <span>Tekst:</span>
-                    <spring:bind path="postText">
-                        <textarea rows="4" cols="50" name="${status.expression}" value="${status.value}">Wpisz...</textarea>
-                    </spring:bind>
-                    <br />
-                    <span>Dodaj link z internetu:</span>
-                    <spring:bind path="URL">
-                        <input type="text" name="${status.expression}" value="${status.value}">
-                    </spring:bind>
-                    <spring:bind path="postUserId">
-                        <input type="hidden" name="${status.expression}" value="<% out.print(LoggedUser.getLoggedUserId()); %>">
-                    </spring:bind>
-                    <br />
-                    <input type="submit" value="Wyślij post">
+                    <input type="submit" value="Wyloguj">
                 </form>
             </spring:nestedPath>
         </div>
@@ -55,7 +44,10 @@
             <%
             out.println(LoggedUser.getLoggedUser());
             %>
+         
         </div>
+    </body>
+</html>
 
     </body>
 </html>

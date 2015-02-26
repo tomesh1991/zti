@@ -5,7 +5,16 @@
  */
 package controller;
 
+import bean.LinkedPost;
+import bean.LoggedUser;
+import bean.LoginWrapper;
+import bean.Person;
+import bean.User;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.SimpleFormController;
+import service.UniversalService;
 
 /**
  *
@@ -13,33 +22,43 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
  */
 public class AdminController extends SimpleFormController {
     
-    public AdminController() {
-        //Initialize controller properties here or 
-        //in the Web Application Context
-
-        //setCommandClass(MyCommand.class);
-        //setCommandName("MyCommandName");
-        //setSuccessView("successView");
-        //setFormView("formView");
-    }
+    UniversalService universalService;
     
-    @Override
-    protected void doSubmitAction(Object command) throws Exception {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public void setUniversalService(UniversalService universalService) {
+        this.universalService = universalService;
+    }
+    public AdminController() {
+        setCommandClass(LinkedPost.class);
+        setCommandName("MyCommandName");
+        setSuccessView("adminFormView");
+        setFormView("adminFormView");
     }
 
-    //Use onSubmit instead of doSubmitAction 
-    //when you need access to the Request, Response, or BindException objects
-    /*
-     @Override
-     protected ModelAndView onSubmit(
-     HttpServletRequest request, 
-     HttpServletResponse response, 
-     Object command, 
-     BindException errors) throws Exception {
-     ModelAndView mv = new ModelAndView(getSuccessView());
-     //Do something...
-     return mv;
-     }
-     */
+    @Override
+    protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, org.springframework.validation.BindException errors) throws Exception {
+        String adminowanie = new String();
+        adminowanie += "Posty do potwierdzenia:<br/>";
+        adminowanie += universalService.showPosts(0);
+        
+        for(int i=0;i<1000;i++)
+        {
+            String s = new String();
+            s = "accept" + i;
+            if((request.getParameter(s))!=null)
+            {
+                universalService.acceptPost(i);
+            }
+        }
+        
+        ModelAndView mv = new ModelAndView(getSuccessView());
+        if(LoggedUser.getLoggedUserAdmin() != 1)
+        {
+            mv.addObject("adminText","Nie jesteś adminem, nie masz dostępu do tej strony");
+        }
+        else
+        {
+            mv.addObject("adminText",adminowanie);
+        }
+        return mv;
+    }
 }

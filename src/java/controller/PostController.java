@@ -48,8 +48,7 @@ public class PostController extends SimpleFormController {
             BindException errors) throws Exception {
         ModelAndView mv = new ModelAndView(getSuccessView());
         LinkedPost post = (LinkedPost) command;
-        post.printAll();
-
+        mv.addObject("postMessage", "Dziękujemy za wysłanie posta");
         universalService.addLinkedPost(post);
         
         return mv;

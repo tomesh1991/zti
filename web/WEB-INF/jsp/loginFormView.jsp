@@ -25,7 +25,8 @@
             <a href="<c:url value="/register.htm" />">Rejestracja</a><br>           
             <a href="<c:url value="/login.htm" />">Logowanie</a><br>    
             <a href="<c:url value="/post.htm" />">Posty</a><br>
-            Coś tu będzie<br>
+            <a href="<c:url value="/admin.htm" />">Panel</a><br>
+            <a href="<c:url value="/logout.htm" />">Wyloguj</a><br>
         </div>
 
         <div id="section">

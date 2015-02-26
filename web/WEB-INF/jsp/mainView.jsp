@@ -4,6 +4,7 @@
     Author     : Klotor90
 --%>
 
+<%@page import="bean.ShowPosts"%>
 <%@page import="bean.LoggedUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
@@ -25,13 +26,22 @@
             <a href="<c:url value="/register.htm" />">Rejestracja</a><br>           
             <a href="<c:url value="/login.htm" />">Logowanie</a><br>    
             <a href="<c:url value="/post.htm" />">Posty</a><br>
-            Coś tu będzie<br>
+            <a href="<c:url value="/admin.htm" />">Panel</a><br>
+            <a href="<c:url value="/logout.htm" />">Wyloguj</a><br>
         </div>
 
-        <div id="section">
-            Strona w konstrukszyn, przyjdź Pan jutro.
+        <div id="section"> 
+            <spring:nestedPath path="posts">
+                <form action="" method="post">
+                    <table>
+                        <tr>
+                            <td><input type="submit" value="Pokaż posty"></td>
+                        </tr>
+                    </table>
+                </form>
+            ${posts}
+            </spring:nestedPath>
         </div>
-
         <div id="footer">
             Zalogowany jako 
             <%

@@ -39,6 +39,21 @@ public class LoggedUser {
         }
         return  Integer.toString(LoggedUser.loggedUser.getUserId());
     }
+
+    public static int getLoggedUserAdmin() {
+       if(LoggedUser.loggedUser == null)
+       {
+           return 0;
+       }
+       else if(loggedUser.isIsAdmin())
+       {
+           return 1;
+       }
+       else
+       {
+           return 0;
+       }
+    }
     
     
 }

@@ -6,6 +6,7 @@
 package service;
 
 import bean.LinkedPost;
+import bean.LoggedUser;
 import bean.LoginWrapper;
 import bean.Person;
 import bean.Post;
@@ -13,6 +14,7 @@ import bean.User;
 import dao.LinkedPostDAO;
 import dao.PersonDAO;
 import dao.PostDAO;
+import java.util.ArrayList;
 
 /**
  *
@@ -78,5 +80,35 @@ public class UniversalService {
     }
     public void setPostDAO(PostDAO postDAO) {
         this.postDAO = postDAO;
+    }
+    
+    public String showPosts(int status) {
+        String toShow = new String();
+        ArrayList<LinkedPost> posts = linkedPostDAO.getLinkedPostByStatus(status);
+        if (posts != null)
+        {
+            for (LinkedPost post: posts)
+            {
+                toShow += "<br/><hr/><br/>";
+                toShow += post.getPostText();
+                toShow += "<br/>";
+                toShow += "<i>" + post.getPostTimestamp() + "</i><br/>";
+                if(post.getURL() != null)
+                    toShow += "<br/>Link: " + post.getURL();
+                else
+                    toShow += "<br/>Brak linka";
+                toShow += "<br/><b>" + personDAO.getPersonById(post.getPostUserId()).getPersName() + "</b>";
+                if(LoggedUser.getLoggedUserAdmin() == 1 && post.getPostStatus() != 1)
+                {
+                    toShow += "<br/><input type=submit name=accept"+post.getPostId()+" value=Potwierdź><br/>";
+                }
+            }
+        }
+        return toShow;
+    }
+    
+    public void acceptPost(int ID)
+    {
+        linkedPostDAO.acceptPost(ID);
     }
 }
