@@ -20,10 +20,17 @@ public class RegisterController extends SimpleFormController {
 
     private UniversalService universalService;
 
+    /**
+     *
+     * @param universalService
+     */
     public void setUniversalService(UniversalService universalService) {
         this.universalService = universalService;
     }
 
+    /**
+     *
+     */
     public RegisterController() {
 //klasa odpowiedzialna za dane przesyłane z formularza:
         setCommandClass(Person.class);
@@ -35,11 +42,25 @@ public class RegisterController extends SimpleFormController {
         setFormView("userFormView");
     }
 
+    /**
+     *
+     * @param command
+     * @throws Exception
+     */
     @Override
     protected void doSubmitAction(Object command) throws Exception {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @param command
+     * @param errors
+     * @return
+     * @throws Exception
+     */
     @Override
     protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, org.springframework.validation.BindException errors) throws Exception {
         Person person = (Person) command;

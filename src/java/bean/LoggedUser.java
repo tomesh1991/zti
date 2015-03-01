@@ -16,6 +16,10 @@ public class LoggedUser {
 
     private static Person loggedUser;
     
+    /**
+     *
+     * @param person
+     */
     public static void setLoggedUser(Person person) {
         LoggedUser.loggedUser = person;
     }
@@ -24,6 +28,11 @@ public class LoggedUser {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+    /**
+     *
+     * @return
+     */
+    
     public static String getLoggedUser() {
         if(LoggedUser.loggedUser == null)
         {
@@ -32,6 +41,10 @@ public class LoggedUser {
         return LoggedUser.loggedUser.getPersName();
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getLoggedUserId() {
         if(LoggedUser.loggedUser == null)
         {
@@ -40,6 +53,10 @@ public class LoggedUser {
         return  Integer.toString(LoggedUser.loggedUser.getUserId());
     }
 
+    /**
+     *
+     * @return
+     */
     public static int getLoggedUserAdmin() {
        if(LoggedUser.loggedUser == null)
        {

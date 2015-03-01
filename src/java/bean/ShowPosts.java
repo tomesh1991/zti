@@ -17,6 +17,10 @@ public class ShowPosts {
     
     private UniversalService universalService;
     
+    /**
+     *
+     * @return
+     */
     public String show() {
         String toShow = new String();
         toShow = universalService.showPosts(1);

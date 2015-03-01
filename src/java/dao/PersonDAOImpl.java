@@ -19,10 +19,18 @@ public class PersonDAOImpl implements PersonDAO {
 
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     *
+     * @param dataSource
+     */
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    /**
+     *
+     * @param person
+     */
     @Override
     public void addPerson(Person person) {
         String query = "INSERT INTO USERS (NAME, EMAIL, LOGIN, PASSWORD, ADMIN, STATUS) VALUES (?,?,?,?,false,1)";
@@ -34,6 +42,11 @@ public class PersonDAOImpl implements PersonDAO {
         });
     }
 
+    /**
+     *
+     * @param userLogin
+     * @return
+     */
     @Override
     public Person getPersonByLogin(String userLogin) {
         String query = "SELECT * FROM USERS WHERE LOGIN=?";
@@ -55,6 +68,11 @@ public class PersonDAOImpl implements PersonDAO {
         return person;
     }
     
+    /**
+     *
+     * @param userId
+     * @return
+     */
     @Override
     public Person getPersonById(int userId) {
         String query = "SELECT * FROM USERS WHERE ID=?";
@@ -76,6 +94,11 @@ public class PersonDAOImpl implements PersonDAO {
         return person;
     }
     
+    /**
+     *
+     * @param userStat
+     * @return
+     */
     @Override
     public ArrayList<Person> getPersonByStatus(int userStat) {
         String query = "SELECT * FROM USERS WHERE STATUS=?";
@@ -97,6 +120,12 @@ public class PersonDAOImpl implements PersonDAO {
         }
         return persons;
     }
+
+    /**
+     *
+     * @param userId
+     * @param new_pass
+     */
     @Override
     public void changeUserPasswd(int userId, String new_pass){
         String query = "UPDATE USERS SET PASSWORD = '?' WHERE ID=?";
@@ -106,6 +135,11 @@ public class PersonDAOImpl implements PersonDAO {
         });
     }
     
+    /**
+     *
+     * @param userId
+     * @param new_addr
+     */
     @Override
     public void changeUserMail(int userId, String new_addr){
         String query = "UPDATE USERS SET EMAIL = '?' WHERE ID=?";
@@ -115,6 +149,10 @@ public class PersonDAOImpl implements PersonDAO {
         });
     }
     
+    /**
+     *
+     * @param userId
+     */
     @Override
     public void acceptUser(int userId){
         String query = "UPDATE USERS SET STATUS=1 WHERE ID=?";
@@ -123,6 +161,10 @@ public class PersonDAOImpl implements PersonDAO {
         });
     }
     
+    /**
+     *
+     * @param userId
+     */
     @Override
     public void dismissUser(int userId){
         String query = "UPDATE USERS SET STATUS=2 WHERE ID=?";
@@ -131,6 +173,10 @@ public class PersonDAOImpl implements PersonDAO {
         });
     }
     
+    /**
+     *
+     * @param userId
+     */
     @Override
     public void deleteUser(int userId){
         String query = "UPDATE USERS SET STATUS=3 WHERE ID=?";
@@ -139,6 +185,10 @@ public class PersonDAOImpl implements PersonDAO {
         });
     }
     
+    /**
+     *
+     * @param userId
+     */
     @Override
     public void grantAdminAccess(int userId){
         String query = "UPDATE USERS SET ADMIN=true WHERE ID=?";
@@ -147,6 +197,10 @@ public class PersonDAOImpl implements PersonDAO {
         });
     }
     
+    /**
+     *
+     * @param userId
+     */
     @Override
     public void revokeAdminAccess(int userId){
         String query = "UPDATE USERS SET ADMIN=false WHERE ID=?";

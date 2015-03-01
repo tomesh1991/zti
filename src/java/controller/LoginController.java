@@ -23,10 +23,17 @@ public class LoginController extends SimpleFormController {
 
     private UniversalService universalService;
 
+    /**
+     *
+     * @param universalService
+     */
     public void setUniversalService(UniversalService universalService) {
         this.universalService = universalService;
     }
 
+    /**
+     *
+     */
     public LoginController() {
         setCommandClass(User.class);
         setCommandName("user");
@@ -34,12 +41,25 @@ public class LoginController extends SimpleFormController {
         setFormView("loginFormView");
     }
 
+    /**
+     *
+     * @param command
+     * @throws Exception
+     */
     @Override
     protected void doSubmitAction(Object command) throws Exception {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-
+    /**
+     *
+     * @param request
+     * @param response
+     * @param command
+     * @param errors
+     * @return
+     * @throws Exception
+     */
     @Override
     protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, org.springframework.validation.BindException errors) throws Exception {
         User user = (User) command;

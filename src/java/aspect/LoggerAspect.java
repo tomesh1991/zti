@@ -27,18 +27,30 @@ public class LoggerAspect {
     private void getPerson() {
     }
 
+    /**
+     *
+     * @param joinPoint
+     */
     @Before("selectAll()")
     public void beforeMethod(JoinPoint joinPoint) {
         System.out.println("Before excecution of method ["
                 + joinPoint.getSignature().getName() + "]");
     }
 
+    /**
+     *
+     * @param joinPoint
+     */
     @After("selectAll()")
     public void afterMethod(JoinPoint joinPoint) {
         System.out.println("After excecution of method ["
                 + joinPoint.getSignature().getName() + "]");
     }
 
+    /**
+     *
+     * @param retVal
+     */
     @AfterReturning(pointcut = "getPerson()", returning = "retVal")
     public void afterReturningMethod(Object retVal) {
         System.out.println("Method getPerson() returning:" + retVal.toString());

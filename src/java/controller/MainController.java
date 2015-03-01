@@ -21,10 +21,17 @@ public class MainController extends SimpleFormController {
 
     private UniversalService universalService;
     
+    /**
+     *
+     * @param universalService
+     */
     public void setUniversalService(UniversalService universalService) {
         this.universalService = universalService;
     }
     
+    /**
+     *
+     */
     public MainController() {
         setCommandClass(LinkedPost.class);
         setCommandName("show");
@@ -34,7 +41,17 @@ public class MainController extends SimpleFormController {
     
     //Use onSubmit instead of doSubmitAction 
     //when you need access to the Request, Response, or BindException objects
-    @Override
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @param command
+     * @param errors
+     * @return
+     * @throws Exception
+     */
+        @Override
     protected ModelAndView onSubmit(
             HttpServletRequest request,
             HttpServletResponse response,

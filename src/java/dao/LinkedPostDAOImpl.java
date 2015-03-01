@@ -23,10 +23,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 public class LinkedPostDAOImpl implements LinkedPostDAO {
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     *
+     * @param dataSource
+     */
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    /**
+     *
+     * @param post
+     */
     @Override
     public void addLinkedPost(LinkedPost post) {
         String query = "INSERT INTO POSTS (USER_ID, TEXT, STATUS, PICT_URL) VALUES (?,?,0,?)";
@@ -38,6 +46,11 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
         });
     }
 
+    /**
+     *
+     * @param userId
+     * @return
+     */
     @Override
     public ArrayList<LinkedPost> getLinkedPostByUser(int userId) {
         String query = "SELECT * FROM POSTS WHERE USER_ID=?";
@@ -60,6 +73,11 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
         return posts;
     }
 
+    /**
+     *
+     * @param postId
+     * @return
+     */
     @Override
     public LinkedPost getLinkedPostById(int postId) {
         String query = "SELECT * FROM POSTS WHERE ID=?";
@@ -80,6 +98,11 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
         return post;
     }
 
+    /**
+     *
+     * @param postStat
+     * @return
+     */
     @Override
     public ArrayList<LinkedPost> getLinkedPostByStatus(int postStat) {
         String query = "SELECT * FROM POSTS WHERE STATUS=?";
@@ -108,6 +131,10 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
         return posts;
     }
 
+    /**
+     *
+     * @param postId
+     */
     @Override
     public void acceptPost(int postId){
         String query = "UPDATE POSTS SET STATUS=1 WHERE ID=?";
@@ -116,6 +143,10 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
         });
     }
 
+    /**
+     *
+     * @param postId
+     */
     @Override
     public void dismissPost(int postId){
         String query = "UPDATE POSTS SET STATUS=2 WHERE ID=?";

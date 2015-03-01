@@ -24,9 +24,17 @@ public class AdminController extends SimpleFormController {
     
     UniversalService universalService;
     
+    /**
+     *
+     * @param universalService
+     */
     public void setUniversalService(UniversalService universalService) {
         this.universalService = universalService;
     }
+
+    /**
+     *
+     */
     public AdminController() {
         setCommandClass(LinkedPost.class);
         setCommandName("MyCommandName");
@@ -34,6 +42,15 @@ public class AdminController extends SimpleFormController {
         setFormView("adminFormView");
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @param command
+     * @param errors
+     * @return
+     * @throws Exception
+     */
     @Override
     protected ModelAndView onSubmit(HttpServletRequest request, HttpServletResponse response, Object command, org.springframework.validation.BindException errors) throws Exception {
         String adminowanie = new String();

@@ -26,6 +26,11 @@ public class UniversalService {
     LinkedPostDAO linkedPostDAO;
     PostDAO postDAO;
 
+    /**
+     *
+     * @param person
+     * @return
+     */
     public String personWelcome(Person person) {
         System.out.print("Powitanie użytkownika");
         String result = "Witaj użytkowniku " + person.getPersName() + " (" + person.getUserLogin()
@@ -33,6 +38,11 @@ public class UniversalService {
         return result;
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     public LoginWrapper logIn(User user) {
         LoginWrapper loginWrapper = new LoginWrapper();
         Person person = getPerson(user);
@@ -52,10 +62,19 @@ public class UniversalService {
         return loginWrapper;
     }
 
+    /**
+     *
+     * @param person
+     */
     public void addPerson(Person person) {
         personDAO.addPerson(person);
     }
 
+    /**
+     *
+     * @param user
+     * @return
+     */
     public Person getPerson(User user) {
         if (user != null) {
             //Person person = getPersonByLogin(user); // Uśmiech prowadzącego :)
@@ -64,24 +83,52 @@ public class UniversalService {
         return null;
     }
     
+    /**
+     *
+     * @param post
+     */
     public void addPost(Post post) {
         postDAO.addPost(post);
     }
+
+    /**
+     *
+     * @param post
+     */
     public void addLinkedPost(LinkedPost post) {
         post.printAll();
         linkedPostDAO.addLinkedPost(post);
     }
 
+    /**
+     *
+     * @param personDAO
+     */
     public void setPersonDAO(PersonDAO personDAO) {
         this.personDAO = personDAO;
     }
+
+    /**
+     *
+     * @param linkedPostDAO
+     */
     public void setLinkedPostDAO(LinkedPostDAO linkedPostDAO) {
         this.linkedPostDAO = linkedPostDAO;
     }
+
+    /**
+     *
+     * @param postDAO
+     */
     public void setPostDAO(PostDAO postDAO) {
         this.postDAO = postDAO;
     }
     
+    /**
+     *
+     * @param status
+     * @return
+     */
     public String showPosts(int status) {
         String toShow = new String();
         ArrayList<LinkedPost> posts = linkedPostDAO.getLinkedPostByStatus(status);
@@ -107,6 +154,10 @@ public class UniversalService {
         return toShow;
     }
     
+    /**
+     *
+     * @param ID
+     */
     public void acceptPost(int ID)
     {
         linkedPostDAO.acceptPost(ID);

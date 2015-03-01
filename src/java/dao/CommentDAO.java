@@ -13,11 +13,30 @@ import bean.Comment;
  */
 public interface CommentDAO {
 
+    /**
+     *
+     * @param person
+     */
     void addComment(Comment person);
 
+    /**
+     *
+     * @param postId
+     * @return
+     */
     Comment getCommentById(int postId);
 
+    /**
+     *
+     * @param userId
+     * @return
+     */
     Comment getCommentByPost(int userId);
 
+    /**
+     *
+     * @param userId
+     * @return
+     */
     Comment getCommentByUser(int userId);
 }

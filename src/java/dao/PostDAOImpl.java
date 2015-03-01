@@ -12,17 +12,26 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
- *
+ * DAO - obsługa klasy Post - implementacja 
+ * @see PostDAO
  * @author Tomasz
  */
 public class PostDAOImpl implements PostDAO {
 
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     *
+     * @param dataSource
+     */
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    /**
+     * metoda dodająca nowy post implementacja
+     * @param post Post dodawany post
+     */
     @Override
     public void addPost(Post post) {
         String query = "INSERT INTO POSTS (USER_ID, TEXT, STATUS) VALUES (?,?,0)";
@@ -33,6 +42,11 @@ public class PostDAOImpl implements PostDAO {
         });
     }
 
+    /**
+     * metoda zwracająca post wg. jego id - implementacja
+     * @param postId int id żądanego posta
+     * @return Post odnaleziony w bazie danych post
+     */
     @Override
     public Post getPostById(int postId) {
         String query = "SELECT * FROM POSTS WHERE ID=?";
@@ -52,6 +66,11 @@ public class PostDAOImpl implements PostDAO {
         return post;
     }
 
+    /**
+     * metoda zwracająca posty wg. ich autora implementacja
+     * @param userId int id autora
+     * @return ArrayList lista postów
+     */
     @Override
     public ArrayList<Post> getPostByUser(int userId) {
         String query = "SELECT * FROM POSTS WHERE USER_ID=?";
@@ -73,6 +92,11 @@ public class PostDAOImpl implements PostDAO {
         return posts;
     }
 
+    /**
+     * metoda zwracająca posty wg. ich statusu - implementacja
+     * @param postStat int id autora
+     * @return ArrayList lista postów
+     */
     @Override
     public ArrayList<Post> getPostByStatus(int postStat) {
         String query = "SELECT * FROM POSTS WHERE STATUS=?";
@@ -93,6 +117,11 @@ public class PostDAOImpl implements PostDAO {
         }
         return posts;
     }
+
+    /**
+     * metoda akceptująca post
+     * @param postId int id postu
+     */
     @Override
     public void acceptPost(int postId){
         String query = "UPDATE POSTS SET STATUS=1 WHERE ID=?";
@@ -101,6 +130,10 @@ public class PostDAOImpl implements PostDAO {
         });
     }
     
+    /**
+     *
+     * @param postId
+     */
     @Override
     public void dismissPost(int postId){
         String query = "UPDATE POSTS SET STATUS=2 WHERE ID=?";

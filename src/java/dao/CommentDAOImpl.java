@@ -18,10 +18,18 @@ public class CommentDAOImpl implements CommentDAO {
 
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     *
+     * @param dataSource
+     */
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    /**
+     *
+     * @param comm
+     */
     @Override
     public void addComment(Comment comm) {
         String query = "INSERT INTO COMMENTS (POST_ID, USER_ID, TEXT) VALUES (?,?,?)";
@@ -31,6 +39,11 @@ public class CommentDAOImpl implements CommentDAO {
             comm.getCommText(),});
     }
 
+    /**
+     *
+     * @param commId
+     * @return
+     */
     @Override
     public Comment getCommentById(int commId) {
         String query = "SELECT * FROM COMMENTS WHERE ID=?";
@@ -50,6 +63,11 @@ public class CommentDAOImpl implements CommentDAO {
         return post;
     }
 
+    /**
+     *
+     * @param postId
+     * @return
+     */
     @Override
     public Comment getCommentByPost(int postId) {
         String query = "SELECT * FROM COMMENTS WHERE POST_ID=?";
@@ -69,6 +87,11 @@ public class CommentDAOImpl implements CommentDAO {
         return post;
     }
 
+    /**
+     *
+     * @param userId
+     * @return
+     */
     @Override
     public Comment getCommentByUser(int userId) {
         String query = "SELECT * FROM COMMENTS WHERE USER_ID=?";
