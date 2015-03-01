@@ -9,79 +9,79 @@ import bean.Person;
 import java.util.ArrayList;
 
 /**
- *
+ * interfejs DAO do obsługi użytkowników 
  * @author Klotor90
  */
 public interface PersonDAO {
 
     /**
-     *
-     * @param person
+     * metoda dodająca nowego użytkownika
+     * @param person Person dodawany użytkownik
      */
     void addPerson(Person person);
 
     /**
-     *
-     * @param userLogin
+     * metoda zwracająca użytkownika wg. jego loginu
+     * @param userLogin String login żądanego posta
      * @return
      */
     Person getPersonByLogin(String userLogin);
 
     /**
-     *
-     * @param userId
-     * @return
+     * metoda zwracająca użytkownika wg. jego id
+     * @param userId int id żądanego użytkownika
+     * @return Person odnaleziony w bazie danych użytkownik
      */
     Person getPersonById(int userId);
 
     /**
-     *
-     * @param userStat
-     * @return
+     * metoda zwracająca użytkowników wg. ich statusu
+     * @param userStat int status
+     * @return ArrayList lista użytkowników
      */
     ArrayList<Person> getPersonByStatus(int userStat);
 
     /**
-     *
-     * @param userId
-     * @param new_pass
+     * metoda zmieniająca hasło użytkownika
+     * @param userId int id użytkownika
+     * @param new_pass String nowe hasło użytkownika
      */
     void changeUserPasswd(int userId, String new_pass);
 
     /**
-     *
-     * @param userId
-     * @param new_addr
+     * metoda zmieniająca e-mail użytkownika
+     * @param userId int id użytkownika
+     * @param new_addr String nowy e-mail użytkownika
      */
     void changeUserMail(int userId, String new_addr);
 
     /**
-     *
-     * @param userId
+     * metoda akceptująca użytkownika
+     * @param userId int id użytkownika
      */
     void acceptUser(int userId);
 
     /**
-     *
-     * @param userId
+     * metoda odrzucająca użytkownika
+     * @param userId int id użytkownika
      */
     void dismissUser(int userId);
 
     /**
-     *
-     * @param userId
+     * metoda usuwająca użytkownika
+     * @param userId int id użytkownika
      */
     void deleteUser(int userId);
 
     /**
-     *
-     * @param userId
+     * metoda nadająca użytkownikowi prawa administratora
+     * @param userId int id użytkownika
      */
     void grantAdminAccess(int userId);
 
     /**
-     *
-     * @param userId
+     * metoda odbierająca użytkownikowi prawa administratora
+     * @param userId int id użytkownika
      */
     void revokeAdminAccess(int userId);
 }

@@ -8,19 +8,19 @@ package dao;
 import bean.LinkedPost;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.sql.DataSource;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
+ * DAO - obsługa klasy LinkedPost - implementacja
  *
+ * @see LinkedPostDAO
  * @author tomasz
  */
 public class LinkedPostDAOImpl implements LinkedPostDAO {
+
     private JdbcTemplate jdbcTemplate;
 
     /**
@@ -32,8 +32,9 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     }
 
     /**
+     * metoda dodająca nowy post z linkiem - implementacja
      *
-     * @param post
+     * @param post Post dodawany post
      */
     @Override
     public void addLinkedPost(LinkedPost post) {
@@ -47,24 +48,25 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     }
 
     /**
+     * metoda zwracająca posty z linkiem wg. ich autora - implementacja
      *
-     * @param userId
-     * @return
+     * @param userId int id autora
+     * @return ArrayList lista postów
      */
     @Override
     public ArrayList<LinkedPost> getLinkedPostByUser(int userId) {
         String query = "SELECT * FROM POSTS WHERE USER_ID=?";
-        ArrayList<LinkedPost> posts = new ArrayList<>(); 
+        ArrayList<LinkedPost> posts = new ArrayList<>();
         LinkedPost post = null;
         try {
             post = (LinkedPost) jdbcTemplate.queryForObject(query, new Object[]{
                 userId}, (ResultSet rs, int i) -> new LinkedPost(rs.getInt("ID"),
-                        rs.getInt("USER_ID"),
-                        rs.getString("TIMESTAMP"),
-                        rs.getString("TEXT"),
-                        rs.getInt("STATUS"),
-                        rs.getString("PICT_URL")
-                ));
+                    rs.getInt("USER_ID"),
+                    rs.getString("TIMESTAMP"),
+                    rs.getString("TEXT"),
+                    rs.getInt("STATUS"),
+                    rs.getString("PICT_URL")
+            ));
             posts.add(post);
         } catch (Exception ex) {
             System.out.println("Could not get Post form database for user ["
@@ -74,9 +76,10 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     }
 
     /**
+     * metoda zwracająca post z linkiem wg. jego id - implementacja
      *
-     * @param postId
-     * @return
+     * @param postId int id żądanego posta
+     * @return Post odnaleziony w bazie danych post
      */
     @Override
     public LinkedPost getLinkedPostById(int postId) {
@@ -85,12 +88,12 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
         try {
             post = (LinkedPost) jdbcTemplate.queryForObject(query, new Object[]{
                 postId}, (ResultSet rs, int i) -> new LinkedPost(rs.getInt("ID"),
-                        rs.getInt("USER_ID"),
-                        rs.getString("TEXT"),
-                        rs.getString("TIMESTAMP"),
-                        rs.getInt("STATUS"),
-                        rs.getString("PICT_URL")
-                ));
+                    rs.getInt("USER_ID"),
+                    rs.getString("TEXT"),
+                    rs.getString("TIMESTAMP"),
+                    rs.getInt("STATUS"),
+                    rs.getString("PICT_URL")
+            ));
         } catch (Exception ex) {
             System.out.println("Could not get Post form database for id ["
                     + postId + "]");
@@ -99,9 +102,10 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     }
 
     /**
+     * metoda zwracająca posty z linkiem wg. ich statusu - implementacja
      *
-     * @param postStat
-     * @return
+     * @param postStat int status
+     * @return ArrayList lista postów
      */
     @Override
     public ArrayList<LinkedPost> getLinkedPostByStatus(int postStat) {
@@ -111,15 +115,15 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
             List<Map<String, Object>> rows;
             rows = jdbcTemplate.queryForList(query, new Object[]{postStat});
             for (Map row : rows) {
-                
+
                 LinkedPost post = new LinkedPost();
-                System.out.println((int)row.get("ID"));
-                post.setPostId((int)row.get("ID"));
-                post.setPostUserId((int)row.get("USER_ID"));
-                post.setPostText((String)row.get("TEXT"));
+                System.out.println((int) row.get("ID"));
+                post.setPostId((int) row.get("ID"));
+                post.setPostUserId((int) row.get("USER_ID"));
+                post.setPostText((String) row.get("TEXT"));
                 post.setPostTimestamp(row.get("TIMESTAMP").toString());
-                post.setPostStatus((int)row.get("STATUS"));
-                post.setURL((String)row.get("PICT_URL"));
+                post.setPostStatus((int) row.get("STATUS"));
+                post.setURL((String) row.get("PICT_URL"));
                 post.printAll();
                 posts.add(post);
             }
@@ -132,28 +136,28 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     }
 
     /**
+     * metoda akceptująca post z linkiem - implementacja
      *
-     * @param postId
+     * @param postId int id postu
      */
     @Override
-    public void acceptPost(int postId){
+    public void acceptPost(int postId) {
         String query = "UPDATE POSTS SET STATUS=1 WHERE ID=?";
         jdbcTemplate.update(query, new Object[]{
-           postId
+            postId
         });
     }
 
     /**
+     * metoda odrzucająca post z linkiem - implementacja
      *
-     * @param postId
+     * @param postId int id postu
      */
     @Override
-    public void dismissPost(int postId){
+    public void dismissPost(int postId) {
         String query = "UPDATE POSTS SET STATUS=2 WHERE ID=?";
         jdbcTemplate.update(query, new Object[]{
-           postId
+            postId
         });
     }
-    
-    
 }

@@ -12,7 +12,8 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
- *
+ * DAO - obsługa klasy Person - implementacja
+ * @see PersonDAO
  * @author Klotor90
  */
 public class PersonDAOImpl implements PersonDAO {
@@ -28,8 +29,8 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     /**
-     *
-     * @param person
+     * metoda dodająca nowego użytkownika -implementacja
+     * @param person Person dodawany użytkownik
      */
     @Override
     public void addPerson(Person person) {
@@ -43,8 +44,8 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     /**
-     *
-     * @param userLogin
+     * metoda zwracająca użytkownika wg. jego loginu - implementacja
+     * @param userLogin String login żądanego posta
      * @return
      */
     @Override
@@ -69,9 +70,9 @@ public class PersonDAOImpl implements PersonDAO {
     }
     
     /**
-     *
-     * @param userId
-     * @return
+     * metoda zwracająca użytkownika wg. jego id - implementacja
+     * @param userId int id żądanego użytkownika
+     * @return Person odnaleziony w bazie danych użytkownik
      */
     @Override
     public Person getPersonById(int userId) {
@@ -95,9 +96,9 @@ public class PersonDAOImpl implements PersonDAO {
     }
     
     /**
-     *
-     * @param userStat
-     * @return
+     * metoda zwracająca użytkowników wg. ich statusu - implementacja
+     * @param userStat int status
+     * @return ArrayList lista użytkowników
      */
     @Override
     public ArrayList<Person> getPersonByStatus(int userStat) {
@@ -114,6 +115,7 @@ public class PersonDAOImpl implements PersonDAO {
                         rs.getString("NAME"),
                         rs.getString("EMAIL")
                 ));
+            persons.add(person);
         } catch (Exception ex) {
             System.out.println("Could not get Person form database for id ["
                     + userStat + "]");
@@ -122,9 +124,9 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     /**
-     *
-     * @param userId
-     * @param new_pass
+     * metoda zmieniająca hasło użytkownika - implementacja
+     * @param userId int id użytkownika
+     * @param new_pass String nowe hasło użytkownika
      */
     @Override
     public void changeUserPasswd(int userId, String new_pass){
@@ -136,9 +138,9 @@ public class PersonDAOImpl implements PersonDAO {
     }
     
     /**
-     *
-     * @param userId
-     * @param new_addr
+     * metoda zmieniająca e-mail użytkownika - implementacja
+     * @param userId int id użytkownika
+     * @param new_addr String nowy e-mail użytkownika
      */
     @Override
     public void changeUserMail(int userId, String new_addr){
@@ -150,8 +152,8 @@ public class PersonDAOImpl implements PersonDAO {
     }
     
     /**
-     *
-     * @param userId
+     * metoda akceptująca użytkownika - implementacja
+     * @param userId int id użytkownika
      */
     @Override
     public void acceptUser(int userId){
@@ -162,8 +164,8 @@ public class PersonDAOImpl implements PersonDAO {
     }
     
     /**
-     *
-     * @param userId
+     * metoda odrzucająca użytkownika - implementacja
+     * @param userId int id użytkownika
      */
     @Override
     public void dismissUser(int userId){
@@ -174,8 +176,8 @@ public class PersonDAOImpl implements PersonDAO {
     }
     
     /**
-     *
-     * @param userId
+     * metoda usuwająca użytkownika - implementacja
+     * @param userId int id użytkownika
      */
     @Override
     public void deleteUser(int userId){
@@ -186,8 +188,8 @@ public class PersonDAOImpl implements PersonDAO {
     }
     
     /**
-     *
-     * @param userId
+     * metoda nadająca użytkownikowi prawa administratora - implementacja
+     * @param userId int id użytkownika
      */
     @Override
     public void grantAdminAccess(int userId){
@@ -198,8 +200,8 @@ public class PersonDAOImpl implements PersonDAO {
     }
     
     /**
-     *
-     * @param userId
+     * metoda odbierająca użytkownikowi prawa administratora - implementacja
+     * @param userId int id użytkownika
      */
     @Override
     public void revokeAdminAccess(int userId){

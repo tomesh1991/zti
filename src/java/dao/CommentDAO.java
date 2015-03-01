@@ -6,37 +6,39 @@
 package dao;
 
 import bean.Comment;
+import bean.Person;
+import java.util.ArrayList;
 
 /**
- *
+ * interfejs DAO do obsługi komentarzy 
  * @author Tomasz
  */
 public interface CommentDAO {
 
     /**
-     *
-     * @param person
+     * metoda dodająca nowy komentarz
+     * @param comm Comment dodawany komentarz
      */
-    void addComment(Comment person);
+    void addComment(Comment comm);
 
     /**
-     *
-     * @param postId
-     * @return
+     * metoda zwracająca komentarz wg. jego id
+     * @param commId int id komentarza
+     * @return Comment odnaleziony w bazie danych komentarz
      */
-    Comment getCommentById(int postId);
+    Comment getCommentById(int commId);
 
     /**
-     *
-     * @param userId
-     * @return
+     * metoda zwracająca komentarze wg. postu, do którego są przypisane
+     * @param postId int id posta
+     * @return ArrayList lista komentarzy
      */
-    Comment getCommentByPost(int userId);
+    ArrayList<Comment> getCommentByPost(int postId);
 
     /**
-     *
-     * @param userId
-     * @return
+     * metoda zwracająca komentarze wg. id uzytkownika, który ja napisał
+     * @param userId int id użytkownika
+     * @return ArrayList lista komentarzy
      */
-    Comment getCommentByUser(int userId);
+    ArrayList<Comment> getCommentByUser(int userId);
 }

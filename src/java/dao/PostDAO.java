@@ -36,7 +36,7 @@ public interface PostDAO {
 
     /**
      * metoda zwracająca posty wg. ich statusu
-     * @param postStat int id autora
+     * @param postStat int status
      * @return ArrayList lista postów
      */
     ArrayList<Post> getPostByStatus(int postStat);
@@ -49,6 +49,7 @@ public interface PostDAO {
 
     /**
      * metoda odrzucająca post
+     *
      * @param postId int id postu
      */
     void dismissPost(int postId);

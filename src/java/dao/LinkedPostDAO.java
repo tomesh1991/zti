@@ -9,47 +9,54 @@ import bean.LinkedPost;
 import java.util.ArrayList;
 
 /**
+ * interfejs DAO do obsługi postów z linkiem
  *
- * @author tomasz
+ * @author Tomasz
  */
 public interface LinkedPostDAO {
 
     /**
+     * metoda dodająca nowy post z linkiem
      *
-     * @param post
+     * @param post Post dodawany post
      */
     void addLinkedPost(LinkedPost post);
 
     /**
+     * metoda zwracająca post z linkiem wg. jego id
      *
-     * @param postId
-     * @return
+     * @param postId int id żądanego posta
+     * @return Post odnaleziony w bazie danych post
      */
     LinkedPost getLinkedPostById(int postId);
 
     /**
+     * metoda zwracająca posty z linkiem wg. ich autora
      *
-     * @param userId
-     * @return
+     * @param userId int id autora
+     * @return ArrayList lista postów
      */
     ArrayList<LinkedPost> getLinkedPostByUser(int userId);
 
     /**
+     * metoda zwracająca posty z linkiem wg. ich statusu
      *
-     * @param postStat
-     * @return
+     * @param postStat int status
+     * @return ArrayList lista postów
      */
     ArrayList<LinkedPost> getLinkedPostByStatus(int postStat);
 
     /**
+     * metoda akceptująca post z linkiem
      *
-     * @param postId
+     * @param postId int id postu
      */
     void acceptPost(int postId);
 
     /**
+     * metoda odrzucająca post z linkiem
      *
-     * @param postId
+     * @param postId int id postu
      */
     void dismissPost(int postId);
 }

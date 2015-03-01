@@ -12,7 +12,8 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
- * DAO - obsługa klasy Post - implementacja 
+ * DAO - obsługa klasy Post - implementacja
+ *
  * @see PostDAO
  * @author Tomasz
  */
@@ -30,6 +31,7 @@ public class PostDAOImpl implements PostDAO {
 
     /**
      * metoda dodająca nowy post implementacja
+     *
      * @param post Post dodawany post
      */
     @Override
@@ -44,6 +46,7 @@ public class PostDAOImpl implements PostDAO {
 
     /**
      * metoda zwracająca post wg. jego id - implementacja
+     *
      * @param postId int id żądanego posta
      * @return Post odnaleziony w bazie danych post
      */
@@ -54,11 +57,11 @@ public class PostDAOImpl implements PostDAO {
         try {
             post = (Post) jdbcTemplate.queryForObject(query, new Object[]{
                 postId}, (ResultSet rs, int i) -> new Post(rs.getInt("ID"),
-                        rs.getInt("USER_ID"),
-                        rs.getString("TIMESTAMP"),
-                        rs.getString("TEXT"),
-                        rs.getInt("STATUS")
-                ));
+                    rs.getInt("USER_ID"),
+                    rs.getString("TIMESTAMP"),
+                    rs.getString("TEXT"),
+                    rs.getInt("STATUS")
+            ));
         } catch (Exception ex) {
             System.out.println("Could not get Post form database for id ["
                     + postId + "]");
@@ -68,22 +71,23 @@ public class PostDAOImpl implements PostDAO {
 
     /**
      * metoda zwracająca posty wg. ich autora implementacja
+     *
      * @param userId int id autora
      * @return ArrayList lista postów
      */
     @Override
     public ArrayList<Post> getPostByUser(int userId) {
         String query = "SELECT * FROM POSTS WHERE USER_ID=?";
-        ArrayList<Post> posts = new ArrayList<>(); 
+        ArrayList<Post> posts = new ArrayList<>();
         Post post = null;
         try {
             post = (Post) jdbcTemplate.queryForObject(query, new Object[]{
                 userId}, (ResultSet rs, int i) -> new Post(rs.getInt("ID"),
-                        rs.getInt("USER_ID"),
-                        rs.getString("TIMESTAMP"),
-                        rs.getString("TEXT"),
-                        rs.getInt("STATUS")
-                ));
+                    rs.getInt("USER_ID"),
+                    rs.getString("TIMESTAMP"),
+                    rs.getString("TEXT"),
+                    rs.getInt("STATUS")
+            ));
             posts.add(post);
         } catch (Exception ex) {
             System.out.println("Could not get Post form database for user ["
@@ -94,6 +98,7 @@ public class PostDAOImpl implements PostDAO {
 
     /**
      * metoda zwracająca posty wg. ich statusu - implementacja
+     *
      * @param postStat int id autora
      * @return ArrayList lista postów
      */
@@ -105,11 +110,11 @@ public class PostDAOImpl implements PostDAO {
         try {
             post = (Post) jdbcTemplate.queryForObject(query, new Object[]{
                 postStat}, (ResultSet rs, int i) -> new Post(rs.getInt("ID"),
-                        rs.getInt("USER_ID"),
-                        rs.getString("TIMESTAMP"),
-                        rs.getString("TEXT"),
-                        rs.getInt("STATUS")
-                ));
+                    rs.getInt("USER_ID"),
+                    rs.getString("TIMESTAMP"),
+                    rs.getString("TEXT"),
+                    rs.getInt("STATUS")
+            ));
             posts.add(post);
         } catch (Exception ex) {
             System.out.println("Could not get Post form database for status ["
@@ -120,25 +125,26 @@ public class PostDAOImpl implements PostDAO {
 
     /**
      * metoda akceptująca post
+     *
      * @param postId int id postu
      */
     @Override
-    public void acceptPost(int postId){
+    public void acceptPost(int postId) {
         String query = "UPDATE POSTS SET STATUS=1 WHERE ID=?";
         jdbcTemplate.update(query, new Object[]{
-           postId
+            postId
         });
     }
-    
+
     /**
      *
      * @param postId
      */
     @Override
-    public void dismissPost(int postId){
+    public void dismissPost(int postId) {
         String query = "UPDATE POSTS SET STATUS=2 WHERE ID=?";
         jdbcTemplate.update(query, new Object[]{
-           postId
+            postId
         });
     }
 }

@@ -7,11 +7,13 @@ package dao;
 
 import bean.Comment;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
- *
+ * DAO - obsługa klasy Comment - implementacja
+ * @see CommentDAO
  * @author Tomasz
  */
 public class CommentDAOImpl implements CommentDAO {
@@ -27,8 +29,8 @@ public class CommentDAOImpl implements CommentDAO {
     }
 
     /**
-     *
-     * @param comm
+     * metoda dodająca nowy komentarz - implementacja
+     * @param comm Comment dodawany komentarz
      */
     @Override
     public void addComment(Comment comm) {
@@ -39,10 +41,10 @@ public class CommentDAOImpl implements CommentDAO {
             comm.getCommText(),});
     }
 
-    /**
-     *
-     * @param commId
-     * @return
+     /**
+     * metoda zwracająca komentarz wg. jego id - implementacja
+     * @param commId int id komentarza
+     * @return Comment odnaleziony w bazie danych komentarz
      */
     @Override
     public Comment getCommentById(int commId) {
@@ -64,14 +66,15 @@ public class CommentDAOImpl implements CommentDAO {
     }
 
     /**
-     *
-     * @param postId
-     * @return
+     * metoda zwracająca komentarze wg. postu, do którego są przypisane - implementacja
+     * @param postId int id posta
+     * @return ArrayList lista komentarzy
      */
     @Override
-    public Comment getCommentByPost(int postId) {
+    public ArrayList<Comment> getCommentByPost(int postId) {
         String query = "SELECT * FROM COMMENTS WHERE POST_ID=?";
         Comment post = null;
+        ArrayList<Comment> comments = new ArrayList<>();
         try {
             post = (Comment) jdbcTemplate.queryForObject(query, new Object[]{
                 postId}, (ResultSet rs, int i) -> new Comment(rs.getInt("ID"),
@@ -80,22 +83,24 @@ public class CommentDAOImpl implements CommentDAO {
                     rs.getString("TIMESTAMP"),
                     rs.getString("TEXT")
             ));
+            comments.add(post);
         } catch (Exception ex) {
             System.out.println("Could not get Comment form database for post ["
                     + postId + "]");
         }
-        return post;
+        return comments;
     }
 
     /**
-     *
-     * @param userId
-     * @return
+     * metoda zwracająca komentarze wg. id uzytkownika, który ja napisał - implementacja
+     * @param userId int id użytkownika
+     * @return ArrayList lista komentarzy
      */
     @Override
-    public Comment getCommentByUser(int userId) {
+    public ArrayList<Comment> getCommentByUser(int userId) {
         String query = "SELECT * FROM COMMENTS WHERE USER_ID=?";
         Comment post = null;
+        ArrayList<Comment> comments = new ArrayList<>();
         try {
             post = (Comment) jdbcTemplate.queryForObject(query, new Object[]{
                 userId}, (ResultSet rs, int i) -> new Comment(rs.getInt("ID"),
@@ -104,10 +109,11 @@ public class CommentDAOImpl implements CommentDAO {
                     rs.getString("TIMESTAMP"),
                     rs.getString("TEXT")
             ));
+            comments.add(post);
         } catch (Exception ex) {
             System.out.println("Could not get Comment form database for user ["
                     + userId + "]");
         }
-        return post;
+        return comments;
     }
 }
