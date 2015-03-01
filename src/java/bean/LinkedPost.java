@@ -22,13 +22,13 @@ public class LinkedPost extends Post {
     }
     
     /**
-     * konstruktor klasy LinkedPost ustawiający wszystkie pola obiektu
-     * @param postId
-     * @param postUserId
-     * @param postText
-     * @param postTimestamp
-     * @param postStatus
-     * @param URL
+     * konstruktor klasy Post ustawiający wszystkie pola obiektu
+     * @param postId [int] id postu
+     * @param postUserId [int] id użytkownika, który napisał post
+     * @param postText [String] treść postu
+     * @param postTimestamp [String] data dodania postu
+     * @param postStatus [int] status postu [0 - oczekujący na akceptację, 1 - zaakceptowany]
+     * @param URL [String] URL dodawanego obrazka
      */
     public LinkedPost(int postId, int postUserId, String postText, String postTimestamp, int postStatus, String URL) {
         super(postId, postUserId, postText, postTimestamp, postStatus);
@@ -36,16 +36,16 @@ public class LinkedPost extends Post {
     }
 
     /**
-     *
-     * @return
+     * getter dla pola URL obiektu
+     * @return [String] url obrazka
      */
     public String getURL() {
         return URL;
     }
 
     /**
-     *
-     * @param URL
+     * setter dla pola URL obiektu
+     * @param URL [String] nowy url obrazka
      */
     public void setURL(String URL) {
         this.URL = URL;
@@ -57,7 +57,7 @@ public class LinkedPost extends Post {
     }
     
     /**
-     *
+     * metoda kontrolna wypisująca wszystkie pola obiektu
      */
     public void printAll()
     {

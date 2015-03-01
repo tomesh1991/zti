@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import service.UniversalService;
 
 /**
- *
+ * klasa kontrolera służacego do obsługi zalogowania się użytkownika
  * @author Klotor90
  */
 public class LoginController extends SimpleFormController {
@@ -24,15 +24,15 @@ public class LoginController extends SimpleFormController {
     private UniversalService universalService;
 
     /**
-     *
-     * @param universalService
+     * metoda konfigurująca obiekt pośredniczący pom. kontrolerem a warstwą DAO
+     * @param universalService [UniversalService]
      */
     public void setUniversalService(UniversalService universalService) {
         this.universalService = universalService;
     }
 
     /**
-     *
+     * kostruktor klasy kontrolera
      */
     public LoginController() {
         setCommandClass(User.class);
@@ -42,17 +42,7 @@ public class LoginController extends SimpleFormController {
     }
 
     /**
-     *
-     * @param command
-     * @throws Exception
-     */
-    @Override
-    protected void doSubmitAction(Object command) throws Exception {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    /**
-     *
+     * metoda obsługująca akcję zalogowania się użytkownika
      * @param request
      * @param response
      * @param command

@@ -21,8 +21,8 @@ public class CommentDAOImpl implements CommentDAO {
     private JdbcTemplate jdbcTemplate;
 
     /**
-     *
-     * @param dataSource
+     * metoda konfigurująca sterownik jdbc
+     * @param dataSource [DataSource]
      */
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -30,7 +30,7 @@ public class CommentDAOImpl implements CommentDAO {
 
     /**
      * metoda dodająca nowy komentarz - implementacja
-     * @param comm Comment dodawany komentarz
+     * @param comm [Comment] dodawany komentarz
      */
     @Override
     public void addComment(Comment comm) {
@@ -43,8 +43,8 @@ public class CommentDAOImpl implements CommentDAO {
 
      /**
      * metoda zwracająca komentarz wg. jego id - implementacja
-     * @param commId int id komentarza
-     * @return Comment odnaleziony w bazie danych komentarz
+     * @param commId [int] id komentarza
+     * @return [Comment] odnaleziony w bazie danych komentarz
      */
     @Override
     public Comment getCommentById(int commId) {
@@ -67,8 +67,8 @@ public class CommentDAOImpl implements CommentDAO {
 
     /**
      * metoda zwracająca komentarze wg. postu, do którego są przypisane - implementacja
-     * @param postId int id posta
-     * @return ArrayList lista komentarzy
+     * @param postId [int] id posta
+     * @return [ArrayList] lista komentarzy
      */
     @Override
     public ArrayList<Comment> getCommentByPost(int postId) {
@@ -93,8 +93,8 @@ public class CommentDAOImpl implements CommentDAO {
 
     /**
      * metoda zwracająca komentarze wg. id uzytkownika, który ja napisał - implementacja
-     * @param userId int id użytkownika
-     * @return ArrayList lista komentarzy
+     * @param userId [int] id użytkownika
+     * @return [ArrayList] lista komentarzy
      */
     @Override
     public ArrayList<Comment> getCommentByUser(int userId) {

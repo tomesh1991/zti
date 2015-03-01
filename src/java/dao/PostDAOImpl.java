@@ -22,8 +22,8 @@ public class PostDAOImpl implements PostDAO {
     private JdbcTemplate jdbcTemplate;
 
     /**
-     *
-     * @param dataSource
+     * metoda konfigurująca sterownik jdbc
+     * @param dataSource [DataSource]
      */
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -32,7 +32,7 @@ public class PostDAOImpl implements PostDAO {
     /**
      * metoda dodająca nowy post implementacja
      *
-     * @param post Post dodawany post
+     * @param post [Post] dodawany post
      */
     @Override
     public void addPost(Post post) {
@@ -47,8 +47,8 @@ public class PostDAOImpl implements PostDAO {
     /**
      * metoda zwracająca post wg. jego id - implementacja
      *
-     * @param postId int id żądanego posta
-     * @return Post odnaleziony w bazie danych post
+     * @param postId [int] id żądanego posta
+     * @return [Post] odnaleziony w bazie danych post
      */
     @Override
     public Post getPostById(int postId) {
@@ -72,8 +72,8 @@ public class PostDAOImpl implements PostDAO {
     /**
      * metoda zwracająca posty wg. ich autora implementacja
      *
-     * @param userId int id autora
-     * @return ArrayList lista postów
+     * @param userId [int] id autora
+     * @return [ArrayList] lista postów
      */
     @Override
     public ArrayList<Post> getPostByUser(int userId) {
@@ -99,8 +99,8 @@ public class PostDAOImpl implements PostDAO {
     /**
      * metoda zwracająca posty wg. ich statusu - implementacja
      *
-     * @param postStat int id autora
-     * @return ArrayList lista postów
+     * @param postStat [int] id autora
+     * @return [ArrayList] lista postów
      */
     @Override
     public ArrayList<Post> getPostByStatus(int postStat) {
@@ -126,7 +126,7 @@ public class PostDAOImpl implements PostDAO {
     /**
      * metoda akceptująca post
      *
-     * @param postId int id postu
+     * @param postId [int] id postu
      */
     @Override
     public void acceptPost(int postId) {
@@ -136,9 +136,10 @@ public class PostDAOImpl implements PostDAO {
         });
     }
 
-    /**
+   /**
+     * metoda odrzucająca post
      *
-     * @param postId
+     * @param postId [int] id postu
      */
     @Override
     public void dismissPost(int postId) {

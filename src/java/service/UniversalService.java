@@ -17,7 +17,7 @@ import dao.PostDAO;
 import java.util.ArrayList;
 
 /**
- *
+ * klasa pośrednicząca pomiędzy warstwami DAO oraz kontrolerami 
  * @author Klotor90
  */
 public class UniversalService {
@@ -27,9 +27,9 @@ public class UniversalService {
     PostDAO postDAO;
 
     /**
-     *
-     * @param person
-     * @return
+     * meteda generujaca wiadomość powitalną dla użytkownika 
+     * @param person [Person] użytkownik
+     * @return [String] wiadomość powitalna
      */
     public String personWelcome(Person person) {
         System.out.print("Powitanie użytkownika");
@@ -39,9 +39,9 @@ public class UniversalService {
     }
 
     /**
-     *
-     * @param user
-     * @return
+     * metoda obsługująca uwierzytelnianie użytkownika
+     * @param user [User] uwierzytelniany użytkownik
+     * @return [LoginWrapper] wynik będący sukcesem lub porażką z powodu złędnego loginu bądź hasła
      */
     public LoginWrapper logIn(User user) {
         LoginWrapper loginWrapper = new LoginWrapper();
@@ -63,17 +63,17 @@ public class UniversalService {
     }
 
     /**
-     *
-     * @param person
+     * metoda obsługująca rejestrację nowego użytkownika
+     * @param person [Person] dane o nowym użytkowniku
      */
     public void addPerson(Person person) {
         personDAO.addPerson(person);
     }
 
     /**
-     *
-     * @param user
-     * @return
+     * metoda pobierająca dane o danym użytkoniku z bazy danych
+     * @param user [User] dane użytkownika
+     * @return [Person] użytkownik, jeżeli istnieje, jeżeli nie, to null
      */
     public Person getPerson(User user) {
         if (user != null) {
@@ -84,16 +84,16 @@ public class UniversalService {
     }
     
     /**
-     *
-     * @param post
+     * metoda obsługująca dodanie nowego posta
+     * @param post [Post] dodawany post
      */
     public void addPost(Post post) {
         postDAO.addPost(post);
     }
 
     /**
-     *
-     * @param post
+     * metoda obsługująca dodanie nowego posta z linkiem
+     * @param post [LinkedPost] dodawany post
      */
     public void addLinkedPost(LinkedPost post) {
         post.printAll();
@@ -101,33 +101,33 @@ public class UniversalService {
     }
 
     /**
-     *
-     * @param personDAO
+     * metoda ustawiająca obiekt warstwy DAO dla klasy Person
+     * @param personDAO [PersonDAO] nowy obiekt warstwy DAO
      */
     public void setPersonDAO(PersonDAO personDAO) {
         this.personDAO = personDAO;
     }
 
     /**
-     *
-     * @param linkedPostDAO
+     * metoda ustawiająca obiekt warstwy DAO dla klasy LinkedPost
+     * @param linkedPostDAO [LinkedPostDAO] nowy obiekt warstwy DAO
      */
     public void setLinkedPostDAO(LinkedPostDAO linkedPostDAO) {
         this.linkedPostDAO = linkedPostDAO;
     }
 
     /**
-     *
-     * @param postDAO
+     * metoda ustawiająca obiekt warstwy DAO dla klasy Post
+     * @param postDAO [PostDAO] nowy obiekt warstwy DAO
      */
     public void setPostDAO(PostDAO postDAO) {
         this.postDAO = postDAO;
     }
     
-    /**
-     *
-     * @param status
-     * @return
+    /** 
+     * metoda obsługująca wyświetlanie się postów
+     * @param status [int] status postów
+     * @return [Strint] wygenerowany kod HTML
      */
     public String showPosts(int status) {
         String toShow = new String();
@@ -155,8 +155,8 @@ public class UniversalService {
     }
     
     /**
-     *
-     * @param ID
+     * metoda obsugujca zaakceptowanie posta
+     * @param ID [int] id posta
      */
     public void acceptPost(int ID)
     {

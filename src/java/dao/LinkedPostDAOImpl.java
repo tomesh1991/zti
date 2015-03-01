@@ -24,8 +24,8 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     private JdbcTemplate jdbcTemplate;
 
     /**
-     *
-     * @param dataSource
+     * metoda konfigurująca sterownik jdbc
+     * @param dataSource [DataSource]
      */
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -34,7 +34,7 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     /**
      * metoda dodająca nowy post z linkiem - implementacja
      *
-     * @param post Post dodawany post
+     * @param post [Post] dodawany post
      */
     @Override
     public void addLinkedPost(LinkedPost post) {
@@ -50,8 +50,8 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     /**
      * metoda zwracająca posty z linkiem wg. ich autora - implementacja
      *
-     * @param userId int id autora
-     * @return ArrayList lista postów
+     * @param userId [int] id autora
+     * @return [ArrayList] lista postów
      */
     @Override
     public ArrayList<LinkedPost> getLinkedPostByUser(int userId) {
@@ -78,8 +78,8 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     /**
      * metoda zwracająca post z linkiem wg. jego id - implementacja
      *
-     * @param postId int id żądanego posta
-     * @return Post odnaleziony w bazie danych post
+     * @param postId [int] id żądanego posta
+     * @return [Post] odnaleziony w bazie danych post
      */
     @Override
     public LinkedPost getLinkedPostById(int postId) {
@@ -104,8 +104,8 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     /**
      * metoda zwracająca posty z linkiem wg. ich statusu - implementacja
      *
-     * @param postStat int status
-     * @return ArrayList lista postów
+     * @param postStat [int] status
+     * @return [ArrayList] lista postów
      */
     @Override
     public ArrayList<LinkedPost> getLinkedPostByStatus(int postStat) {
@@ -138,7 +138,7 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     /**
      * metoda akceptująca post z linkiem - implementacja
      *
-     * @param postId int id postu
+     * @param postId [int] id postu
      */
     @Override
     public void acceptPost(int postId) {
@@ -151,7 +151,7 @@ public class LinkedPostDAOImpl implements LinkedPostDAO {
     /**
      * metoda odrzucająca post z linkiem - implementacja
      *
-     * @param postId int id postu
+     * @param postId [int] id postu
      */
     @Override
     public void dismissPost(int postId) {

@@ -8,7 +8,7 @@ package bean;
 import javax.ejb.Stateful;
 
 /**
- *
+ * klasa - bezstanowy bean przechowujący zalogowanego użytkownika
  * @author klotor90
  */
 @Stateful
@@ -29,7 +29,7 @@ public class LoggedUser {
     // "Insert Code > Add Business Method")
 
     /**
-     *
+     * 
      * @return
      */
     

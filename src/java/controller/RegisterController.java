@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import service.UniversalService;
 
 /**
- *
+ * klasa kontrolera służacego do obsługi rejestrowania się nowego użytkownika
  * @author Klotor90
  */
 public class RegisterController extends SimpleFormController {
@@ -21,15 +21,15 @@ public class RegisterController extends SimpleFormController {
     private UniversalService universalService;
 
     /**
-     *
-     * @param universalService
+     * metoda konfigurująca obiekt pośredniczący pom. kontrolerem a warstwą DAO
+     * @param universalService [UniverslaService]
      */
     public void setUniversalService(UniversalService universalService) {
         this.universalService = universalService;
     }
 
     /**
-     *
+     * domyślny konstruktor klasy
      */
     public RegisterController() {
 //klasa odpowiedzialna za dane przesyłane z formularza:
@@ -43,17 +43,7 @@ public class RegisterController extends SimpleFormController {
     }
 
     /**
-     *
-     * @param command
-     * @throws Exception
-     */
-    @Override
-    protected void doSubmitAction(Object command) throws Exception {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    /**
-     *
+     * metoda obsługująca rejestrowanie nowych użytkowników
      * @param request
      * @param response
      * @param command

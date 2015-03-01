@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import service.UniversalService;
 
 /**
- *
+ * klasa kontrolera służacego do obsługi strony głównej
  * @author Klotor90
  */
 public class MainController extends SimpleFormController {
@@ -22,15 +22,15 @@ public class MainController extends SimpleFormController {
     private UniversalService universalService;
     
     /**
-     *
-     * @param universalService
+     * metoda konfigurująca obiekt pośredniczący pom. kontrolerem a warstwą DAO
+     * @param universalService [UniversalService]
      */
     public void setUniversalService(UniversalService universalService) {
         this.universalService = universalService;
     }
     
     /**
-     *
+     * domyślny konstruktor klasy
      */
     public MainController() {
         setCommandClass(LinkedPost.class);
@@ -43,7 +43,7 @@ public class MainController extends SimpleFormController {
     //when you need access to the Request, Response, or BindException objects
 
     /**
-     *
+     * metoda obsługująca akceptowanie nowych postów użytkowników
      * @param request
      * @param response
      * @param command

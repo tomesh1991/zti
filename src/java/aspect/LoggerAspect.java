@@ -13,7 +13,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 /**
- *
+ * element programowania aspektowego generująca log aplikacji na standardowe wyjście serwera 
  * @author Klotor90
  */
 @Aspect
@@ -28,7 +28,7 @@ public class LoggerAspect {
     }
 
     /**
-     *
+     * metoda generująca komunikat przed wykonaniem metody
      * @param joinPoint
      */
     @Before("selectAll()")
@@ -38,7 +38,7 @@ public class LoggerAspect {
     }
 
     /**
-     *
+     * metoda generująca komunikat po wykonaniu metody
      * @param joinPoint
      */
     @After("selectAll()")
@@ -48,7 +48,7 @@ public class LoggerAspect {
     }
 
     /**
-     *
+     * metoda generująca komunikat o wyniku działania wykonanej metody
      * @param retVal
      */
     @AfterReturning(pointcut = "getPerson()", returning = "retVal")

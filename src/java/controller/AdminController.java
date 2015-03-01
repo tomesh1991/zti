@@ -7,9 +7,6 @@ package controller;
 
 import bean.LinkedPost;
 import bean.LoggedUser;
-import bean.LoginWrapper;
-import bean.Person;
-import bean.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,23 +14,23 @@ import org.springframework.web.servlet.mvc.SimpleFormController;
 import service.UniversalService;
 
 /**
- *
+ * klasa kontrolera służacego do obsługi czynności administracyjnych
  * @author Klotor90
  */
 public class AdminController extends SimpleFormController {
-    
+
     UniversalService universalService;
-    
+
     /**
-     *
-     * @param universalService
+     * metoda konfigurująca obiekt pośredniczący pom. kontrolerem a warstwą DAO
+     * @param universalService [UniversalService]
      */
     public void setUniversalService(UniversalService universalService) {
         this.universalService = universalService;
     }
 
     /**
-     *
+     * konstruktor domyślny klasy 
      */
     public AdminController() {
         setCommandClass(LinkedPost.class);
@@ -43,7 +40,7 @@ public class AdminController extends SimpleFormController {
     }
 
     /**
-     *
+     * metoda obsługująca akceptowanie nowych postów użytkowników
      * @param request
      * @param response
      * @param command
@@ -56,25 +53,20 @@ public class AdminController extends SimpleFormController {
         String adminowanie = new String();
         adminowanie += "Posty do potwierdzenia:<br/>";
         adminowanie += universalService.showPosts(0);
-        
-        for(int i=0;i<1000;i++)
-        {
+
+        for (int i = 0; i < 1000; i++) {
             String s = new String();
             s = "accept" + i;
-            if((request.getParameter(s))!=null)
-            {
+            if ((request.getParameter(s)) != null) {
                 universalService.acceptPost(i);
             }
         }
-        
+
         ModelAndView mv = new ModelAndView(getSuccessView());
-        if(LoggedUser.getLoggedUserAdmin() != 1)
-        {
-            mv.addObject("adminText","Nie jesteś adminem, nie masz dostępu do tej strony");
-        }
-        else
-        {
-            mv.addObject("adminText",adminowanie);
+        if (LoggedUser.getLoggedUserAdmin() != 1) {
+            mv.addObject("adminText", "Nie jesteś adminem, nie masz dostępu do tej strony");
+        } else {
+            mv.addObject("adminText", adminowanie);
         }
         return mv;
     }

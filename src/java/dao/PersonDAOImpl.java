@@ -21,8 +21,8 @@ public class PersonDAOImpl implements PersonDAO {
     private JdbcTemplate jdbcTemplate;
 
     /**
-     *
-     * @param dataSource
+     * metoda konfigurująca sterownik jdbc
+     * @param dataSource [DataSource]
      */
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -30,7 +30,7 @@ public class PersonDAOImpl implements PersonDAO {
 
     /**
      * metoda dodająca nowego użytkownika -implementacja
-     * @param person Person dodawany użytkownik
+     * @param person [Person] dodawany użytkownik
      */
     @Override
     public void addPerson(Person person) {
@@ -45,8 +45,8 @@ public class PersonDAOImpl implements PersonDAO {
 
     /**
      * metoda zwracająca użytkownika wg. jego loginu - implementacja
-     * @param userLogin String login żądanego posta
-     * @return
+     * @param userLogin [String] login żądanego posta
+     * @return [Person] odnaleziony w bazie danych użytkownik
      */
     @Override
     public Person getPersonByLogin(String userLogin) {
@@ -71,8 +71,8 @@ public class PersonDAOImpl implements PersonDAO {
     
     /**
      * metoda zwracająca użytkownika wg. jego id - implementacja
-     * @param userId int id żądanego użytkownika
-     * @return Person odnaleziony w bazie danych użytkownik
+     * @param userId [int] id żądanego użytkownika
+     * @return [Person] odnaleziony w bazie danych użytkownik
      */
     @Override
     public Person getPersonById(int userId) {
@@ -97,8 +97,8 @@ public class PersonDAOImpl implements PersonDAO {
     
     /**
      * metoda zwracająca użytkowników wg. ich statusu - implementacja
-     * @param userStat int status
-     * @return ArrayList lista użytkowników
+     * @param userStat [int] status
+     * @return [ArrayList] lista użytkowników
      */
     @Override
     public ArrayList<Person> getPersonByStatus(int userStat) {
@@ -125,8 +125,8 @@ public class PersonDAOImpl implements PersonDAO {
 
     /**
      * metoda zmieniająca hasło użytkownika - implementacja
-     * @param userId int id użytkownika
-     * @param new_pass String nowe hasło użytkownika
+     * @param userId [int] id użytkownika
+     * @param new_pass [String] nowe hasło użytkownika
      */
     @Override
     public void changeUserPasswd(int userId, String new_pass){
@@ -139,8 +139,8 @@ public class PersonDAOImpl implements PersonDAO {
     
     /**
      * metoda zmieniająca e-mail użytkownika - implementacja
-     * @param userId int id użytkownika
-     * @param new_addr String nowy e-mail użytkownika
+     * @param userId [int] id użytkownika
+     * @param new_addr [String] nowy e-mail użytkownika
      */
     @Override
     public void changeUserMail(int userId, String new_addr){
@@ -153,7 +153,7 @@ public class PersonDAOImpl implements PersonDAO {
     
     /**
      * metoda akceptująca użytkownika - implementacja
-     * @param userId int id użytkownika
+     * @param userId [int] id użytkownika
      */
     @Override
     public void acceptUser(int userId){
@@ -165,7 +165,7 @@ public class PersonDAOImpl implements PersonDAO {
     
     /**
      * metoda odrzucająca użytkownika - implementacja
-     * @param userId int id użytkownika
+     * @param userId [int] id użytkownika
      */
     @Override
     public void dismissUser(int userId){
@@ -177,7 +177,7 @@ public class PersonDAOImpl implements PersonDAO {
     
     /**
      * metoda usuwająca użytkownika - implementacja
-     * @param userId int id użytkownika
+     * @param userId [int] id użytkownika
      */
     @Override
     public void deleteUser(int userId){
@@ -189,7 +189,7 @@ public class PersonDAOImpl implements PersonDAO {
     
     /**
      * metoda nadająca użytkownikowi prawa administratora - implementacja
-     * @param userId int id użytkownika
+     * @param userId [int] id użytkownika
      */
     @Override
     public void grantAdminAccess(int userId){
@@ -201,7 +201,7 @@ public class PersonDAOImpl implements PersonDAO {
     
     /**
      * metoda odbierająca użytkownikowi prawa administratora - implementacja
-     * @param userId int id użytkownika
+     * @param userId [int] id użytkownika
      */
     @Override
     public void revokeAdminAccess(int userId){

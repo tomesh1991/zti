@@ -6,7 +6,7 @@
 package bean;
 
 /**
- *
+ * klasa wrapper dla procesu logowania
  * @author Klotor90
  */
 public class LoginWrapper {
@@ -21,32 +21,32 @@ public class LoginWrapper {
     }
 
     /**
-     *
-     * @return
+     * metoda pobierająca komunikat logowania 
+     * @return [String] komunikat logowania 
      */
     public String getMessage() {
         return message;
     }
 
     /**
-     *
-     * @param message
+     * metoda ustawiająca komunikat logowania 
+     * @param message [String] komunikat logowania 
      */
     public void setMessage(String message) {
         this.message = message;
     }
 
     /**
-     *
-     * @return
+     * metoda pobierająca logujacego się użytkownika 
+     * @return [Person] obiekt użytkownika
      */
     public Person getPerson() {
         return person;
     }
 
     /**
-     *
-     * @param person
+     * metoda ustawiająca logujacego się użytkownika 
+     * @param person [Person] obiekt użytkownika
      */
     public void setPerson(Person person) {
         this.person = person;

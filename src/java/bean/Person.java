@@ -22,14 +22,14 @@ public class Person extends User {
     }
 
     /**
-     * konstruktor klasy Person ustawiający wszystkie pola obiektu
-     * @param userId
-     * @param userLogin
-     * @param userPass
-     * @param isAdmin
-     * @param userStatus
-     * @param persName
-     * @param persEmail
+     * konstruktor klasy User ustawiający wszystkie pola obiektu
+     * @param userId [int] id uzytkownika
+     * @param userPass [String] hasło użytkownika
+     * @param userLogin [String] login użytkownika
+     * @param isAdmin [boolean] uprawnienia administratorskie
+     * @param userStatus [int] status użytkownika
+     * @param persName [String] nazwisko użytkownika
+     * @param persEmail [String] adres e-mail użytkownika
      */
     public Person(int userId, String userLogin, String userPass, boolean isAdmin, int userStatus, String persName, String persEmail) {
         super(userId, userPass, userLogin, isAdmin, userStatus);
@@ -39,7 +39,7 @@ public class Person extends User {
 
     /**
      * getter dla pola persName obiektu
-     * @return String imię osoby
+     * @return [String] imię osoby
      */
     public String getPersName() {
         return persName;
@@ -47,7 +47,7 @@ public class Person extends User {
 
     /**
      * setter dla pola persName obiektu
-     * @param persName String nowe nazwisko osoby
+     * @param persName [String] nowe nazwisko osoby
      */
     public void setPersName(String persName) {
         this.persName = persName;
@@ -55,7 +55,7 @@ public class Person extends User {
 
     /**
      * getter dla pola persEmail obiektu
-     * @return String adres e-mail osoby
+     * @return [String] adres e-mail osoby
      */
     public String getPersEmail() {
         return persEmail;
@@ -63,7 +63,7 @@ public class Person extends User {
 
     /**
      * setter dla pola persEmail obiektu
-     * @param persEmail nowy e-mail 
+     * @param persEmail [String] nowy e-mail 
      */
     public void setPersEmail(String persEmail) {
         this.persEmail = persEmail;

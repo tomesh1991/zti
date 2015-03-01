@@ -9,7 +9,7 @@ import javax.ejb.Stateless;
 import service.UniversalService;
 
 /**
- *
+ * klasa - bezstanowy bean przechowująca posty
  * @author klotor90
  */
 @Stateless
@@ -18,8 +18,8 @@ public class ShowPosts {
     private UniversalService universalService;
     
     /**
-     *
-     * @return
+     * metoda uświetlająca zaakceptowane posty
+     * @return [String] treść zaakceprtowanych postów
      */
     public String show() {
         String toShow = new String();
